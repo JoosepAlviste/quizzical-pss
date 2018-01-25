@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-web-app1",
+  "version": "0.0.0",
+  "description": "NodejsWebApp1",
+  "main": "server.js",
+  "author": {
+    "name": "Ιωσήφ Κακαλέλης"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "pug": "^2.0.0-rc.4",
+    "sequelize": "^4.32.1"
+  }
+}
