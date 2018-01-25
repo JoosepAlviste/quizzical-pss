@@ -1,3 +1,5 @@
 .idea/
 .DS_Store
+.vs/
+node_modules/
 
