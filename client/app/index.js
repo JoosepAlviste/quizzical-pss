@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './quizzical/containers/Root';
 import { configureStore, history } from './store/configureStore';
-import './app.global.css';
+import './scss/main.global.scss';
 
 const store = configureStore();
 
@@ -15,7 +15,7 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
+  module.hot.accept('./quizzical/containers/Root', () => {
     const NextRoot = require('./quizzical/containers/Root'); // eslint-disable-line global-require
     render(
       <AppContainer>
