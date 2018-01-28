@@ -1,11 +1,12 @@
-# Atomic LMS
+# Quizzical
 
-A small Learning Management System allowing administrators/teachers to manage courses and students to see their results.
+A quiz application for creating and taking quizzes on various subjects.
 
 ## Structure
 
-The project consists of 3 parts: the server, the web front-end application for managers and the Android application for students.
+The project consists of 2 parts: the server and the client-side desktop application.
 
 ## Set up
 
-Follow the readme files in each of the projects.
+Follow the readme files in the server and the desktop app.
+
