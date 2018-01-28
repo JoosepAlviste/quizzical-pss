@@ -8,7 +8,7 @@ type Props = {
   incrementIfOdd: () => void,
   incrementAsync: () => void,
   decrement: () => void,
-  counter: number
+  counter: number,
 };
 
 class Counter extends Component<Props> {
