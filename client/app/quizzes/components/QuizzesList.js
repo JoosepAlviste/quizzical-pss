@@ -5,7 +5,7 @@ import * as fromQuizzes from '../reducers';
 /**
  * List of quizzes.
  *
- * @param props {{props:QuizzesListType}}
+ * @param props {{props: QuizzesListType}}
  * @returns {*}
  */
 const QuizzesList = (props: { quizzes: fromQuizzes.QuizzesListType }) => (

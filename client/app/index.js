@@ -1,11 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import axios from 'axios';
 import Root from './quizzical/containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './scss/main.global.scss';
+import apiConfig from './config/api';
 
 const store = configureStore();
+
+axios.defaults.baseURL = apiConfig.baseUrl;
 
 render(
   <AppContainer>
