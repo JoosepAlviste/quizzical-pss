@@ -13,7 +13,15 @@ export default class Home extends Component<Props> {
       <div>
         <div className={styles.container} data-tid="container">
           <h2>Home</h2>
-          <Link to="/counter">to Counter</Link><br />
+
+          <br />
+          <h6>Users</h6>
+          <div>
+            <button type="button"> Sign up!! </button> 
+            <button type="button">Login! </button>
+          </div>
+          <Link to="/counter">Counter!</Link>
+          <br />
           <Link to="/quizzes">to Quizzes</Link>
         </div>
       </div>
