@@ -24,7 +24,7 @@ class QuizzesPage extends Component<Props> {
       <div>
         <h1 className="title">Quizzes!</h1>
         <VisibleQuizzesList />
-        <Link to="/AddQuiz">Add new Quiz</Link> <br />
+        <Link to="/quizzes/create">Create a new Quiz</Link><br />
         <Link to="/">Home</Link>
       </div>
     );

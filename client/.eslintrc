@@ -18,7 +18,15 @@
     "generator-star-spacing": "off",
     "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-for": [ "error", {
+      "components": [ "Label" ],
+      "required": {
+        "every": [ "nesting", "id" ]
+      },
+      "allowChildren": false
+    }],
     "no-console": "off",
     "no-class-assign": "off",
     "no-use-before-define": "off",
