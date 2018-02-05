@@ -13,10 +13,9 @@ export const updateQuizTitle = (title) => ({
 });
 
 export const submitCreateQuizForm = () => (dispatch, getState) => {
-  console.log('test!');
-  // event.preventDefault();
   const quiz = getState().quizForm;
-  console.log('test!', quiz);
+
+  console.log('Creating quiz!', quiz);
 
   return api.storeQuiz(quiz)
     .then(newQuiz => newQuiz)
