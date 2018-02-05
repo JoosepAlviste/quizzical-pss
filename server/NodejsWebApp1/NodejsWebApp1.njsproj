@@ -28,6 +28,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="migration.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\index.html">
@@ -36,6 +39,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="migrations\" />
     <Folder Include="pages\" />
     <Folder Include="public\" />
   </ItemGroup>

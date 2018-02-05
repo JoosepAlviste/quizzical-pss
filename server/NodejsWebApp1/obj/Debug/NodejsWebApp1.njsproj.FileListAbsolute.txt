@@ -1,0 +1,3 @@
+C:\Users\User\OneDrive - Uppsala universitet\quizzical\server\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsprojResolveAssemblyReference.cache
+C:\Users\User\OneDrive - Uppsala universitet\quizzical\server\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive - Uppsala universitet\quizzical\server\NodejsWebApp1\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,5 +1,6 @@
 const express = require('express')
 var bodyParser = require('body-parser');
+//const models = require('./models')
 const app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'))
