@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../../quizzical/elements/Button';
 
 type Props = {
   title: string,
@@ -35,9 +36,9 @@ class QuizForm extends Component<Props> {
 
         <div className="field">
           <div className="control">
-            <button className="button is-primary" type="submit">
+            <Button type="submit">
               Save
-            </button>
+            </Button>
           </div>
         </div>
       </form>

@@ -135,4 +135,5 @@ Types are completely optional.
 
 ## Dispatching redux actions from main process
 
-See [#118](https://github.com/chentsulin/electron-react-boilerplate/issues/118) and [#108](https://github.com/chentsulin/electron-react-boilerplate/issues/108)
+See [#118](https://github.com/chentsulin/electron-react-boilerplate/issues/118) and 
+[#108](https://github.com/chentsulin/electron-react-boilerplate/issues/108)
