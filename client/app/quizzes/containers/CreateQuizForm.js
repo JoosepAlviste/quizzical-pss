@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import QuizForm from '../components/QuizForm';
 import {
-  addQuestion, submitCreateQuizForm, updateQuestionText, updateQuizTitle,
+  addAnswer, addQuestion, submitCreateQuizForm, updateAnswerText, updateQuestionText,
+  updateQuizTitle,
 } from '../actions/quizForm';
 
 const mapStateToProps = (state) => ({
@@ -24,6 +25,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   onQuestionTextChanged(tempId, text) {
     dispatch(updateQuestionText(tempId, text));
+  },
+
+  onAnswerAdded(questionTempId) {
+    dispatch(addAnswer(questionTempId));
+  },
+
+  onAnswerTextChanged(tempId, text) {
+    dispatch(updateAnswerText(tempId, text));
   },
 });
 

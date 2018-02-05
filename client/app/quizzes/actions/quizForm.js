@@ -4,6 +4,8 @@ export const UPDATE_QUIZ_TITLE = 'UPDATE_QUIZ_TITLE';
 export const EMPTY_QUIZ_FORM = 'EMPTY_QUIZ_FORM';
 export const ADD_QUESTION_TO_QUIZ_FORM = 'ADD_QUESTION_TO_QUIZ_FORM';
 export const UPDATE_QUESTION_TEXT = 'UPDATE_QUESTION_TEXT';
+export const ADD_ANSWER_TO_QUIZ_FORM = 'ADD_ANSWER_TO_QUIZ_FORM';
+export const UPDATE_ANSWER_TEXT = 'UPDATE_ANSWER_TEXT';
 
 export const updateQuizTitle = (title) => ({
   type: UPDATE_QUIZ_TITLE,
@@ -11,7 +13,10 @@ export const updateQuizTitle = (title) => ({
 });
 
 export const submitCreateQuizForm = () => (dispatch, getState) => {
+  console.log('test!');
+  // event.preventDefault();
   const quiz = getState().quizForm;
+  console.log('test!', quiz);
 
   return api.storeQuiz(quiz)
     .then(newQuiz => newQuiz)
@@ -29,6 +34,17 @@ export const addQuestion = () => ({
 
 export const updateQuestionText = (tempId, text) => ({
   type: UPDATE_QUESTION_TEXT,
+  tempId,
+  text,
+});
+
+export const addAnswer = (questionTempId) => ({
+  type: ADD_ANSWER_TO_QUIZ_FORM,
+  questionTempId,
+});
+
+export const updateAnswerText = (tempId, text) => ({
+  type: UPDATE_ANSWER_TEXT,
   tempId,
   text,
 });

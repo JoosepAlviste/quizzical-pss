@@ -8,7 +8,7 @@ type Props = {
 const SubmitField = (props: Props) => (
   <div className="field">
     <div className="control">
-      <Button type="submit">
+      <Button buttonType="submit">
         {props.children}
       </Button>
     </div>

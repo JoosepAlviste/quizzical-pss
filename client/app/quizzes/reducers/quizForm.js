@@ -1,6 +1,7 @@
 import uuid from 'uuid/v1';
 import {
-  ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, UPDATE_QUESTION_TEXT,
+  ADD_ANSWER_TO_QUIZ_FORM,
+  ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, UPDATE_ANSWER_TEXT, UPDATE_QUESTION_TEXT,
   UPDATE_QUIZ_TITLE,
 } from '../actions/quizForm';
 
@@ -15,6 +16,43 @@ const getInitialQuestion = () => ({
   answers: [],
 });
 
+const getInitialAnswer = () => ({
+  tempId: uuid(),
+  text: '',
+  correct: false,
+});
+
+const answer = (state, action) => {
+  if (!state) {
+    return getInitialAnswer();
+  }
+
+  switch (action.type) {
+    case UPDATE_ANSWER_TEXT:
+      if (state.tempId !== action.tempId) {
+        return state;
+      }
+
+      return { ...state, text: action.text };
+    default:
+      return state;
+  }
+};
+
+const answers = (state = [], action) => {
+  switch (action.type) {
+    case ADD_ANSWER_TO_QUIZ_FORM:
+      return [
+        ...state,
+        answer(undefined, action),
+      ];
+    case UPDATE_ANSWER_TEXT:
+      return state.map(a => answer(a, action));
+    default:
+      return state;
+  }
+};
+
 const question = (state, action) => {
   if (!state) {
     return getInitialQuestion();
@@ -27,6 +65,20 @@ const question = (state, action) => {
       }
 
       return { ...state, text: action.text };
+    case ADD_ANSWER_TO_QUIZ_FORM:
+      if (state.tempId !== action.questionTempId) {
+        return state;
+      }
+
+      return {
+        ...state,
+        answers: answers(state.answers, action),
+      };
+    case UPDATE_ANSWER_TEXT:
+      return {
+        ...state,
+        answers: answers(state.answers, action),
+      };
     default:
       return state;
   }
@@ -40,6 +92,10 @@ const questions = (state = [], action) => {
         question(undefined, action),
       ];
     case UPDATE_QUESTION_TEXT:
+      return state.map(q => question(q, action));
+    case ADD_ANSWER_TO_QUIZ_FORM:
+      return state.map(q => question(q, action));
+    case UPDATE_ANSWER_TEXT:
       return state.map(q => question(q, action));
     default:
       return state;
@@ -58,6 +114,16 @@ const quizForm = (state = initialState, action) => {
         questions: questions(state.questions, action),
       };
     case UPDATE_QUESTION_TEXT:
+      return {
+        ...state,
+        questions: questions(state.questions, action),
+      };
+    case ADD_ANSWER_TO_QUIZ_FORM:
+      return {
+        ...state,
+        questions: questions(state.questions, action),
+      };
+    case UPDATE_ANSWER_TEXT:
       return {
         ...state,
         questions: questions(state.questions, action),
