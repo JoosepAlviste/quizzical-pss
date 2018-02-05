@@ -1,3 +1,4 @@
+import uuid from 'uuid/v1';
 import {
   ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, UPDATE_QUESTION_TEXT,
   UPDATE_QUIZ_TITLE,
@@ -6,6 +7,43 @@ import {
 const initialState = {
   title: '',
   questions: [],
+};
+
+const getInitialQuestion = () => ({
+  tempId: uuid(),
+  text: '',
+  answers: [],
+});
+
+const question = (state, action) => {
+  if (!state) {
+    return getInitialQuestion();
+  }
+
+  switch (action.type) {
+    case UPDATE_QUESTION_TEXT:
+      if (state.tempId !== action.tempId) {
+        return state;
+      }
+
+      return { ...state, text: action.text };
+    default:
+      return state;
+  }
+};
+
+const questions = (state = [], action) => {
+  switch (action.type) {
+    case ADD_QUESTION_TO_QUIZ_FORM:
+      return [
+        ...state,
+        question(undefined, action),
+      ];
+    case UPDATE_QUESTION_TEXT:
+      return state.map(q => question(q, action));
+    default:
+      return state;
+  }
 };
 
 const quizForm = (state = initialState, action) => {
@@ -17,20 +55,13 @@ const quizForm = (state = initialState, action) => {
     case ADD_QUESTION_TO_QUIZ_FORM:
       return {
         ...state,
-        questions: [
-          ...state.questions,
-          {
-            text: '',
-            answers: [],
-          }
-        ],
+        questions: questions(state.questions, action),
       };
     case UPDATE_QUESTION_TEXT:
-      const newQuestion = { ...state.questions[action.index], text: action.text };
-      const questions = [...state.questions];
-      questions[action.index] = newQuestion;
-
-      return { ...state, questions };
+      return {
+        ...state,
+        questions: questions(state.questions, action),
+      };
     default:
       return state;
   }

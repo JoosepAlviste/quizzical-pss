@@ -1,7 +1,14 @@
 import axios from 'axios';
 
-type QuestionCreate = {
+type AnswerCreate = {
   text: string,
+  correct: boolean,
+};
+
+type QuestionCreate = {
+  tempId: string,
+  text: string,
+  answers: Array<AnswerCreate>,
 };
 
 type QuizCreateRequest = {

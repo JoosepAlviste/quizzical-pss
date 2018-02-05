@@ -8,7 +8,7 @@ type Props = {
   onTitleChanged: (string) => void,
   onSubmitted: () => void,
   onQuestionAdded: () => void,
-  onQuestionTextChanged: (number, string) => void,
+  onQuestionTextChanged: (string, string) => void,
 };
 
 class QuizForm extends Component<Props> {
@@ -35,13 +35,13 @@ class QuizForm extends Component<Props> {
 
         <h2 className="subtitle">Questions</h2>
 
-        {questions.map((question, index) => (
-          <div key={index}>
+        {questions.map(question => (
+          <div key={question.tempId}>
             <TextField
               label="Question title"
-              name={`question-title-${index}`}
+              name={`question-title-${question.tempId}`}
               value={question.text}
-              onChange={e => onQuestionTextChanged(index, e.target.value)}
+              onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
             />
           </div>
         ))}

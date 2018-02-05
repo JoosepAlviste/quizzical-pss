@@ -27,8 +27,8 @@ export const addQuestion = () => ({
   type: ADD_QUESTION_TO_QUIZ_FORM,
 });
 
-export const updateQuestionText = (index, text) => ({
+export const updateQuestionText = (tempId, text) => ({
   type: UPDATE_QUESTION_TEXT,
+  tempId,
   text,
-  index,
 });

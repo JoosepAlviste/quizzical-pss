@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addQuestion());
   },
 
-  onQuestionTextChanged(index, text) {
-    dispatch(updateQuestionText(index, text));
+  onQuestionTextChanged(tempId, text) {
+    dispatch(updateQuestionText(tempId, text));
   },
 });
 
