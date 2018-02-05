@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import Button from '../../quizzical/elements/Button';
+import TextField from '../../quizzical/elements/TextField';
+import SubmitField from '../../quizzical/elements/SubmitField';
 
 type Props = {
   title: string,
+  questions: Array,
   onTitleChanged: (string) => void,
   onSubmitted: () => void,
+  onQuestionAdded: () => void,
+  onQuestionTextChanged: (number, string) => void,
 };
 
 class QuizForm extends Component<Props> {
@@ -13,34 +17,42 @@ class QuizForm extends Component<Props> {
   render() {
     const {
       title,
+      questions,
       onTitleChanged,
       onSubmitted,
+      onQuestionAdded,
+      onQuestionTextChanged,
     } = this.props;
 
     return (
-      <form onSubmit={() => onSubmitted()}>
-        <div className="field">
-          <label className="label" htmlFor="title">
-            Title
-            <div className="control">
-              <input
-                className="input"
-                id="title"
-                type="text"
-                value={title}
-                onChange={e => onTitleChanged(e.target.value)}
-              />
-            </div>
-          </label>
-        </div>
+      <form onSubmit={onSubmitted}>
+        <TextField
+          label="Title"
+          name="title"
+          value={title}
+          onChange={e => onTitleChanged(e.target.value)}
+        />
 
-        <div className="field">
-          <div className="control">
-            <Button type="submit">
-              Save
-            </Button>
+        <h2 className="subtitle">Questions</h2>
+
+        {questions.map((question, index) => (
+          <div key={index}>
+            <TextField
+              label="Question title"
+              name={`question-title-${index}`}
+              value={question.text}
+              onChange={e => onQuestionTextChanged(index, e.target.value)}
+            />
           </div>
-        </div>
+        ))}
+
+        <button type="button" onClick={() => onQuestionAdded()}>
+          Add question
+        </button>
+
+        <SubmitField>
+          Save
+        </SubmitField>
       </form>
     );
   }
