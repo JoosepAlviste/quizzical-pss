@@ -6,6 +6,7 @@ export const ADD_QUESTION_TO_QUIZ_FORM = 'ADD_QUESTION_TO_QUIZ_FORM';
 export const UPDATE_QUESTION_TEXT = 'UPDATE_QUESTION_TEXT';
 export const ADD_ANSWER_TO_QUIZ_FORM = 'ADD_ANSWER_TO_QUIZ_FORM';
 export const UPDATE_ANSWER_TEXT = 'UPDATE_ANSWER_TEXT';
+export const TOGGLE_ANSWER_CORRECT = 'TOGGLE_ANSWER_CORRECT';
 
 export const updateQuizTitle = (title) => ({
   type: UPDATE_QUIZ_TITLE,
@@ -46,4 +47,10 @@ export const updateAnswerText = (tempId, text) => ({
   type: UPDATE_ANSWER_TEXT,
   tempId,
   text,
+});
+
+export const toggleAnswerCorrect = (tempId, questionTempId) => ({
+  type: TOGGLE_ANSWER_CORRECT,
+  tempId,
+  questionTempId,
 });

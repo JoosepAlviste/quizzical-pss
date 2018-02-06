@@ -12,6 +12,7 @@ type Props = {
   onQuestionTextChanged: (string, string) => void,
   onAnswerAdded: (string) => void,
   onAnswerTextChanged: (string, string) => void,
+  onAnswerCorrectToggled: (string) => void,
 };
 
 class QuizForm extends Component<Props> {
@@ -38,6 +39,7 @@ class QuizForm extends Component<Props> {
       onQuestionTextChanged,
       onAnswerAdded,
       onAnswerTextChanged,
+      onAnswerCorrectToggled,
     } = this.props;
 
     return (
@@ -63,20 +65,35 @@ class QuizForm extends Component<Props> {
             <h3 className="subtitle is-3">Answers</h3>
 
             {question.answers.map(answer => (
-              <div key={answer.tempId}>
-                <TextField
-                  label="Answer title"
-                  name={`answer-title-${answer.tempId}`}
-                  value={answer.text}
-                  onChange={e => onAnswerTextChanged(answer.tempId, e.target.value)}
-                />
+              <div key={answer.tempId} className="field is-grouped">
+                <p className="control is-expanded">
+                  <input
+                    className="input"
+                    name={`answer-title-${answer.tempId}`}
+                    type="text"
+                    value={answer.text}
+                    onChange={e => onAnswerTextChanged(answer.tempId, e.target.value)}
+                  />
+                </p>
+                <p className="control">
+                  <label
+                    htmlFor={`answer-correct-${answer.tempId}`}
+                    className="checkbox"
+                  >
+                    <input
+                      name={`answer-correct-${answer.tempId}`}
+                      id={`answer-correct-${answer.tempId}`}
+                      type="checkbox"
+                      checked={answer.correct}
+                      onChange={() => onAnswerCorrectToggled(answer.tempId, question.tempId)}
+                    />
+                    &nbsp;Correct
+                  </label>
+                </p>
               </div>
             ))}
 
-            <Button
-              type="info"
-              onClick={() => onAnswerAdded(question.tempId)}
-            >
+            <Button type="info" onClick={() => onAnswerAdded(question.tempId)}>
               Add an answer
             </Button>
 

@@ -1,8 +1,7 @@
 import uuid from 'uuid/v1';
 import {
-  ADD_ANSWER_TO_QUIZ_FORM,
-  ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, UPDATE_ANSWER_TEXT, UPDATE_QUESTION_TEXT,
-  UPDATE_QUIZ_TITLE,
+  ADD_ANSWER_TO_QUIZ_FORM, ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, TOGGLE_ANSWER_CORRECT,
+  UPDATE_ANSWER_TEXT, UPDATE_QUESTION_TEXT, UPDATE_QUIZ_TITLE,
 } from '../actions/quizForm';
 
 const initialState = {
@@ -34,6 +33,12 @@ const answer = (state, action) => {
       }
 
       return { ...state, text: action.text };
+    case TOGGLE_ANSWER_CORRECT:
+      if (state.tempId !== action.tempId) {
+        return { ...state, correct: false };
+      }
+
+      return { ...state, correct: !state.correct };
     default:
       return state;
   }
@@ -47,6 +52,8 @@ const answers = (state = [], action) => {
         answer(undefined, action),
       ];
     case UPDATE_ANSWER_TEXT:
+      return state.map(a => answer(a, action));
+    case TOGGLE_ANSWER_CORRECT:
       return state.map(a => answer(a, action));
     default:
       return state;
@@ -79,6 +86,15 @@ const question = (state, action) => {
         ...state,
         answers: answers(state.answers, action),
       };
+    case TOGGLE_ANSWER_CORRECT:
+      if (state.tempId !== action.questionTempId) {
+        return { ...state };
+      }
+
+      return {
+        ...state,
+        answers: answers(state.answers, action),
+      };
     default:
       return state;
   }
@@ -96,6 +112,8 @@ const questions = (state = [], action) => {
     case ADD_ANSWER_TO_QUIZ_FORM:
       return state.map(q => question(q, action));
     case UPDATE_ANSWER_TEXT:
+      return state.map(q => question(q, action));
+    case TOGGLE_ANSWER_CORRECT:
       return state.map(q => question(q, action));
     default:
       return state;
@@ -124,6 +142,11 @@ const quizForm = (state = initialState, action) => {
         questions: questions(state.questions, action),
       };
     case UPDATE_ANSWER_TEXT:
+      return {
+        ...state,
+        questions: questions(state.questions, action),
+      };
+    case TOGGLE_ANSWER_CORRECT:
       return {
         ...state,
         questions: questions(state.questions, action),

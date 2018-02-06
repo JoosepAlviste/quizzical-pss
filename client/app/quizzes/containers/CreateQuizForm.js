@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import QuizForm from '../components/QuizForm';
 import {
-  addAnswer, addQuestion, submitCreateQuizForm, updateAnswerText, updateQuestionText,
+  addAnswer, addQuestion, submitCreateQuizForm, toggleAnswerCorrect, updateAnswerText, updateQuestionText,
   updateQuizTitle,
 } from '../actions/quizForm';
 
@@ -33,6 +33,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onAnswerTextChanged(tempId, text) {
     dispatch(updateAnswerText(tempId, text));
+  },
+
+  onAnswerCorrectToggled(tempId, questionTempId) {
+    dispatch(toggleAnswerCorrect(tempId, questionTempId));
   },
 });
 
