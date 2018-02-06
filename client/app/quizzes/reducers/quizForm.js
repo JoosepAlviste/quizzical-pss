@@ -4,6 +4,23 @@ import {
   UPDATE_ANSWER_TEXT, UPDATE_QUESTION_TEXT, UPDATE_QUIZ_TITLE,
 } from '../actions/quizForm';
 
+export type Answer = {
+  tempId: string,
+  text: string,
+  correct: boolean,
+};
+
+export type Question = {
+  tempId: string,
+  text: string,
+  answers: Array<Answer>,
+};
+
+export type Quiz = {
+  title: string,
+  questions: Array<Question>,
+};
+
 const initialState = {
   title: '',
   questions: [],
@@ -21,7 +38,7 @@ const getInitialAnswer = () => ({
   correct: false,
 });
 
-const answer = (state, action) => {
+const answer = (state: ?Answer, action) => {
   if (!state) {
     return getInitialAnswer();
   }
@@ -44,7 +61,7 @@ const answer = (state, action) => {
   }
 };
 
-const answers = (state = [], action) => {
+const answers = (state: ?Array<Answer> = [], action) => {
   switch (action.type) {
     case ADD_ANSWER_TO_QUIZ_FORM:
       return [
@@ -60,7 +77,7 @@ const answers = (state = [], action) => {
   }
 };
 
-const question = (state, action) => {
+const question = (state: ?Question, action) => {
   if (!state) {
     return getInitialQuestion();
   }
@@ -100,7 +117,7 @@ const question = (state, action) => {
   }
 };
 
-const questions = (state = [], action) => {
+const questions = (state: ?Array<Question> = [], action) => {
   switch (action.type) {
     case ADD_QUESTION_TO_QUIZ_FORM:
       return [
@@ -120,7 +137,7 @@ const questions = (state = [], action) => {
   }
 };
 
-const quizForm = (state = initialState, action) => {
+const quizForm = (state: ?Quiz = initialState, action) => {
   switch (action.type) {
     case UPDATE_QUIZ_TITLE:
       return { ...state, title: action.title };

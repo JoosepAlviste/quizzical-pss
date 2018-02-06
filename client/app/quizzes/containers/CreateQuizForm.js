@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import QuizForm from '../components/QuizForm';
 import {
-  addAnswer, addQuestion, submitCreateQuizForm, toggleAnswerCorrect, updateAnswerText, updateQuestionText,
-  updateQuizTitle,
+  addAnswer, addQuestion, submitCreateQuizForm, toggleAnswerCorrect, updateAnswerText,
+  updateQuestionText, updateQuizTitle,
 } from '../actions/quizForm';
 
 const mapStateToProps = (state) => ({

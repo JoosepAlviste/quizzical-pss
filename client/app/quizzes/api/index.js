@@ -1,27 +1,17 @@
 import axios from 'axios';
+import { Quiz } from '../reducers/quizForm';
 
-type AnswerCreate = {
-  text: string,
-  correct: boolean,
-};
-
-type QuestionCreate = {
-  tempId: string,
-  text: string,
-  answers: Array<AnswerCreate>,
-};
-
-type QuizCreateRequest = {
+type QuizListResponse = Array<{
+  id: string,
   title: string,
-  questions: Array<QuestionCreate>,
-};
+}>;
 
 type QuizCreateResponse = {
   id: number,
 };
 
-export const fetchQuizzes = () =>
+export const fetchQuizzes = (): Promise<QuizListResponse> =>
   axios.get('/quizzes').then((response) => response.data);
 
-export const storeQuiz = (quiz: QuizCreateRequest): Promise<QuizCreateResponse> =>
+export const storeQuiz = (quiz: Quiz): Promise<QuizCreateResponse> =>
   axios.post('/quizzes', quiz).then(response => response.data);
