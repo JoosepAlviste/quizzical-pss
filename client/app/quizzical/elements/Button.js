@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  const { type , buttonType } = props;
+  const { type, buttonType } = props;
 
   return (
     <button

@@ -6,11 +6,13 @@ import HomePage from './containers/HomePage';
 import CounterPage from '../counter/containers/CounterPage';
 import QuizzesPage from '../quizzes/containers/QuizzesPage';
 import CreateQuizPage from '../quizzes/containers/CreateQuizPage';
+import AnswerQuizPage from '../quizzes/containers/AnswerQuizPage';
 
 export default () => (
   <App>
     <Switch>
       <Route path="/counter" component={CounterPage} />
+      <Route path="/quizzes/:quizId" component={AnswerQuizPage} />
       <Route path="/quizzes/create" component={CreateQuizPage} />
       <Route path="/quizzes" component={QuizzesPage} />
       <Route path="/" component={HomePage} />
