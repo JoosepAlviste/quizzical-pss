@@ -12,8 +12,8 @@ export default () => (
   <App>
     <Switch>
       <Route path="/counter" component={CounterPage} />
-      <Route path="/quizzes/:quizId" component={AnswerQuizPage} />
       <Route path="/quizzes/create" component={CreateQuizPage} />
+      <Route path="/quizzes/:quizId" component={AnswerQuizPage} />
       <Route path="/quizzes" component={QuizzesPage} />
       <Route path="/" component={HomePage} />
     </Switch>

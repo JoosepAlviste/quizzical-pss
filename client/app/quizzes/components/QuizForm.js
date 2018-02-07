@@ -56,8 +56,8 @@ class QuizForm extends Component<Props> {
         {questions.map(question => (
           <div key={question.tempId}>
             <TextField
-              label="Question title"
-              name={`question-title-${question.tempId}`}
+              label="Question text"
+              name={`question-text-${question.tempId}`}
               value={question.text}
               onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
             />
