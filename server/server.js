@@ -39,11 +39,11 @@ connection.connect(function (err) {
     }
 });
 
-connection.query('SELECT * FROM QUIZ', function (err, rows, fields) {
-    if (err) throw err
+//connection.query('SELECT * FROM QUIZ', function (err, rows, fields) {
+//    if (err) throw err
 
-    console.log('The solution is: ', rows)
-})
+//    console.log('The solution is: ', rows)
+//})
 // quiz retrieval route
 app.get('/quizzes', function (req, res, next) {
     
@@ -55,19 +55,19 @@ app.get('/quizzes', function (req, res, next) {
     
 });
 
-app.post('/addQuiz/:quizName', function (req, res, next) {
-    var quizName = req.params.quizName;
-    connection.connect(function (err) {
-        if (err) throw err;
-        console.log("Connected!");
-        con.query('INSERT INTO quiz SET ?', quizName,
-            function (err, result) {
-                if (err) throw err;
-                res.send('Quiz added to database with ID: ' + result.insertId);
-            }
-        );
-    })
-});
+//app.post('/addQuiz/:quizName', function (req, res, next) {
+//    var quizName = req.params.quizName;
+//    connection.connect(function (err) {
+//        if (err) throw err;
+//        console.log("Connected!");
+//        con.query('INSERT INTO quiz SET ?', quizName,
+//            function (err, result) {
+//                if (err) throw err;
+//                res.send('Quiz added to database with ID: ' + result.insertId);
+//            }
+//        );
+//    })
+//});
 app.post('/createQuiz', function (req, res) {
     // this is where you handle the POST request.
     var createQuiz = {
