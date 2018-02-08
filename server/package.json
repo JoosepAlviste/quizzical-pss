@@ -9,9 +9,12 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
+    "db-migrate-mysql": "^1.1.10",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
+    "mysql-migrations": "^1.0.4",
     "mysql2": "^1.5.1",
+    "node-mysql-migration": "^0.2.1",
     "pug": "^2.0.0-rc.4",
     "sequelize": "^4.32.1"
   }

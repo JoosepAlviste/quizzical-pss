@@ -4,6 +4,7 @@
 *.sln
 obj/
 bin/*.dll
+UpgradeLog.htm
 
 # User-specific files
 *.suo
