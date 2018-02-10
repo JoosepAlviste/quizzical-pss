@@ -11,16 +11,11 @@ module.exports = {
       question_id: {
         type: Sequelize.INTEGER
       },
-      choice_text: {
+      text: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      correct: {
+        type: Sequelize.BOOLEAN,
       }
     });
   },
