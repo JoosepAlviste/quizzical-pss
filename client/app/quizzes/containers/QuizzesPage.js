@@ -32,7 +32,7 @@ class QuizzesPage extends Component<Props> {
           <VisibleQuizzesList />
 
           <Link
-            className="button is-primary"
+            className="button is-info"
             to="/quizzes/create"
           >
             Create a new Quiz

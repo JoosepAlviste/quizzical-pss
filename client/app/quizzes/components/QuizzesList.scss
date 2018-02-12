@@ -1,9 +1,9 @@
+@import '../../scss/utilities/all';
+
 $colors: (
-  #f15156,
-  #f2e863,
-  #91a6ff,
-  #f73,
-  #a1dd66,
+  $yellow,
+  $purple,
+  $turquoise,
 );
 
 .quizzesList {
