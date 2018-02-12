@@ -21,11 +21,23 @@ class QuizzesPage extends Component<Props> {
 
   render() {
     return (
-      <div>
-        <h1 className="title">Quizzes!</h1>
-        <VisibleQuizzesList />
-        <Link to="/quizzes/create">Create a new Quiz</Link><br />
-        <Link to="/">Home</Link>
+      <div className="page--padding-top">
+        <div className="container">
+          <Link className="back-button" to="/">
+            <i className="fa fa-arrow-left fa-3x" />
+          </Link>
+
+          <h1 className="title has-text-centered">Quizzes!</h1>
+
+          <VisibleQuizzesList />
+
+          <Link
+            className="button is-primary"
+            to="/quizzes/create"
+          >
+            Create a new Quiz
+          </Link>
+        </div>
       </div>
     );
   }

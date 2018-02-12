@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import CreateQuizForm from './CreateQuizForm';
 
 const CreateQuizPage = () => (
-  <div className="container">
-    <h1 className="title">Add a New Quiz!</h1>
+  <div className="page--padding-top">
+    <div className="container">
+      <h1 className="title">Add a New Quiz!</h1>
 
-    <CreateQuizForm />
+      <CreateQuizForm />
 
-    <Link to="/">Home</Link>
+      <Link className="button is-text" to="/">Home</Link>
+    </div>
   </div>
 );
 

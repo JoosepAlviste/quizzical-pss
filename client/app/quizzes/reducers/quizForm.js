@@ -1,10 +1,10 @@
 import uuid from 'uuid/v1';
 import {
-  ADD_ANSWER_TO_QUIZ_FORM, ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, TOGGLE_ANSWER_CORRECT,
-  UPDATE_ANSWER_TEXT, UPDATE_QUESTION_TEXT, UPDATE_QUIZ_TITLE,
+  ADD_CHOICE_TO_QUIZ_FORM, ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, TOGGLE_CHOICE_CORRECT,
+  UPDATE_CHOICE_TEXT, UPDATE_QUESTION_TEXT, UPDATE_QUIZ_TITLE,
 } from '../actions/quizForm';
 
-export type Answer = {
+export type Choice = {
   tempId: string,
   text: string,
   correct: boolean,
@@ -13,7 +13,7 @@ export type Answer = {
 export type Question = {
   tempId: string,
   text: string,
-  answers: Array<Answer>,
+  choices: Array<Choice>,
 };
 
 export type Quiz = {
@@ -29,28 +29,28 @@ const initialState = {
 const getInitialQuestion = () => ({
   tempId: uuid(),
   text: '',
-  answers: [],
+  choices: [],
 });
 
-const getInitialAnswer = () => ({
+const getInitialChoice = () => ({
   tempId: uuid(),
   text: '',
   correct: false,
 });
 
-const answer = (state: ?Answer, action) => {
+const choice = (state: ?Choice, action) => {
   if (!state) {
-    return getInitialAnswer();
+    return getInitialChoice();
   }
 
   switch (action.type) {
-    case UPDATE_ANSWER_TEXT:
+    case UPDATE_CHOICE_TEXT:
       if (state.tempId !== action.tempId) {
         return state;
       }
 
       return { ...state, text: action.text };
-    case TOGGLE_ANSWER_CORRECT:
+    case TOGGLE_CHOICE_CORRECT:
       if (state.tempId !== action.tempId) {
         return { ...state, correct: false };
       }
@@ -61,17 +61,17 @@ const answer = (state: ?Answer, action) => {
   }
 };
 
-const answers = (state: ?Array<Answer> = [], action) => {
+const choices = (state: ?Array<Choice> = [], action) => {
   switch (action.type) {
-    case ADD_ANSWER_TO_QUIZ_FORM:
+    case ADD_CHOICE_TO_QUIZ_FORM:
       return [
         ...state,
-        answer(undefined, action),
+        choice(undefined, action),
       ];
-    case UPDATE_ANSWER_TEXT:
-      return state.map(a => answer(a, action));
-    case TOGGLE_ANSWER_CORRECT:
-      return state.map(a => answer(a, action));
+    case UPDATE_CHOICE_TEXT:
+      return state.map(a => choice(a, action));
+    case TOGGLE_CHOICE_CORRECT:
+      return state.map(a => choice(a, action));
     default:
       return state;
   }
@@ -89,28 +89,28 @@ const question = (state: ?Question, action) => {
       }
 
       return { ...state, text: action.text };
-    case ADD_ANSWER_TO_QUIZ_FORM:
+    case ADD_CHOICE_TO_QUIZ_FORM:
       if (state.tempId !== action.questionTempId) {
         return state;
       }
 
       return {
         ...state,
-        answers: answers(state.answers, action),
+        choices: choices(state.choices, action),
       };
-    case UPDATE_ANSWER_TEXT:
+    case UPDATE_CHOICE_TEXT:
       return {
         ...state,
-        answers: answers(state.answers, action),
+        choices: choices(state.choices, action),
       };
-    case TOGGLE_ANSWER_CORRECT:
+    case TOGGLE_CHOICE_CORRECT:
       if (state.tempId !== action.questionTempId) {
         return { ...state };
       }
 
       return {
         ...state,
-        answers: answers(state.answers, action),
+        choices: choices(state.choices, action),
       };
     default:
       return state;
@@ -126,11 +126,11 @@ const questions = (state: ?Array<Question> = [], action) => {
       ];
     case UPDATE_QUESTION_TEXT:
       return state.map(q => question(q, action));
-    case ADD_ANSWER_TO_QUIZ_FORM:
+    case ADD_CHOICE_TO_QUIZ_FORM:
       return state.map(q => question(q, action));
-    case UPDATE_ANSWER_TEXT:
+    case UPDATE_CHOICE_TEXT:
       return state.map(q => question(q, action));
-    case TOGGLE_ANSWER_CORRECT:
+    case TOGGLE_CHOICE_CORRECT:
       return state.map(q => question(q, action));
     default:
       return state;
@@ -153,17 +153,17 @@ const quizForm = (state: ?Quiz = initialState, action) => {
         ...state,
         questions: questions(state.questions, action),
       };
-    case ADD_ANSWER_TO_QUIZ_FORM:
+    case ADD_CHOICE_TO_QUIZ_FORM:
       return {
         ...state,
         questions: questions(state.questions, action),
       };
-    case UPDATE_ANSWER_TEXT:
+    case UPDATE_CHOICE_TEXT:
       return {
         ...state,
         questions: questions(state.questions, action),
       };
-    case TOGGLE_ANSWER_CORRECT:
+    case TOGGLE_CHOICE_CORRECT:
       return {
         ...state,
         questions: questions(state.questions, action),

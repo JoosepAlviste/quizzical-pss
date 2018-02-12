@@ -10,9 +10,9 @@ type Props = {
   onSubmitted: () => void,
   onQuestionAdded: () => void,
   onQuestionTextChanged: (string, string) => void,
-  onAnswerAdded: (string) => void,
-  onAnswerTextChanged: (string, string) => void,
-  onAnswerCorrectToggled: (string) => void,
+  onChoiceAdded: (string) => void,
+  onChoiceTextChanged: (string, string) => void,
+  onChoiceCorrectToggled: (string) => void,
 };
 
 class QuizForm extends Component<Props> {
@@ -37,9 +37,9 @@ class QuizForm extends Component<Props> {
       onTitleChanged,
       onQuestionAdded,
       onQuestionTextChanged,
-      onAnswerAdded,
-      onAnswerTextChanged,
-      onAnswerCorrectToggled,
+      onChoiceAdded,
+      onChoiceTextChanged,
+      onChoiceCorrectToggled,
     } = this.props;
 
     return (
@@ -62,30 +62,30 @@ class QuizForm extends Component<Props> {
               onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
             />
 
-            <h3 className="subtitle is-3">Answers</h3>
+            <h3 className="subtitle is-3">Choices</h3>
 
-            {question.answers.map(answer => (
-              <div key={answer.tempId} className="field is-grouped">
+            {question.choices.map(choice => (
+              <div key={choice.tempId} className="field is-grouped">
                 <p className="control is-expanded">
                   <input
                     className="input"
-                    name={`answer-title-${answer.tempId}`}
+                    name={`choice-title-${choice.tempId}`}
                     type="text"
-                    value={answer.text}
-                    onChange={e => onAnswerTextChanged(answer.tempId, e.target.value)}
+                    value={choice.text}
+                    onChange={e => onChoiceTextChanged(choice.tempId, e.target.value)}
                   />
                 </p>
                 <p className="control">
                   <label
-                    htmlFor={`answer-correct-${answer.tempId}`}
+                    htmlFor={`choice-correct-${choice.tempId}`}
                     className="checkbox"
                   >
                     <input
-                      name={`answer-correct-${answer.tempId}`}
-                      id={`answer-correct-${answer.tempId}`}
+                      name={`choice-correct-${choice.tempId}`}
+                      id={`choice-correct-${choice.tempId}`}
                       type="checkbox"
-                      checked={answer.correct}
-                      onChange={() => onAnswerCorrectToggled(answer.tempId, question.tempId)}
+                      checked={choice.correct}
+                      onChange={() => onChoiceCorrectToggled(choice.tempId, question.tempId)}
                     />
                     &nbsp;Correct
                   </label>
@@ -93,8 +93,8 @@ class QuizForm extends Component<Props> {
               </div>
             ))}
 
-            <Button type="info" onClick={() => onAnswerAdded(question.tempId)}>
-              Add an answer
+            <Button type="info" onClick={() => onChoiceAdded(question.tempId)}>
+              Add a Choice
             </Button>
 
             <hr />

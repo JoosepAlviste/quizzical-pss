@@ -1,0 +1,36 @@
+$colors: (
+  #f15156,
+  #f2e863,
+  #91a6ff,
+  #f73,
+  #a1dd66,
+);
+
+.quizzesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px 10px;
+  padding-bottom: 20px;
+}
+
+.quizzesListItem {
+  background: #fff;
+  padding: 25px 15px;
+  border-left: 4px solid;
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: box-shadow 250ms ease-in;
+
+  @for $i from 1 through length($colors) {
+    $color: nth($colors, $i);
+
+    &:nth-child(#{length($colors)}n + #{$i}) {
+      border-left-color: $color;
+    }
+  }
+
+  &:hover {
+    color: lighten(#333, 15%);
+    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.15);
+  }
+}
