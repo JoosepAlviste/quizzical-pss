@@ -1,14 +1,14 @@
 const express = require("express");
 const Sequelize = require('sequelize');
 
-const router = express.Router();
-
 const routesFunction = (sequelize) => {
+  const router = express.Router();
+
   const Quiz = require('../models/quiz')(sequelize, Sequelize.DataTypes);
   const Question = require('../models/question')(sequelize, Sequelize.DataTypes);
   const Choice = require('../models/choice')(sequelize, Sequelize.DataTypes);
 
-// quiz retrieval route
+  // quiz retrieval route
   router.get('/', (req, res) => {
     Quiz.findAll().then(quizzes => {
       res.send(quizzes);
@@ -39,6 +39,8 @@ const routesFunction = (sequelize) => {
         });
       });
   });
+
+  return router;
 };
 
 module.exports = routesFunction;
