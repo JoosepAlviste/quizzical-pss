@@ -62,7 +62,7 @@ class QuizForm extends Component<Props> {
               onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
             />
 
-            <h3 className="subtitle is-3">Choices</h3>
+            <h3 className="subtitle is-4">Choices</h3>
 
             {question.choices.map(choice => (
               <div key={choice.tempId} className="field is-grouped">
@@ -107,6 +107,8 @@ class QuizForm extends Component<Props> {
         >
           Add a question
         </Button>
+
+        <hr />
 
         <SubmitField>
           Save
