@@ -12,5 +12,9 @@
     "mysql2": "^1.5.1",
     "sequelize": "^4.32.1",
     "sequelize-cli": "^3.2.0"
+  },
+  "scripts": {
+    "run": "node server.js",
+    "migrate": "sequelize db:migrate"
   }
 }

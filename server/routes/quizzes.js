@@ -15,6 +15,40 @@ const routesFunction = (sequelize) => {
     });
   });
 
+  router.get('/:quizID', function (req, res){
+      var obj = new Object();
+
+      Quiz.findById(req.params.quizID).then(quiz => {
+            obj.quiz = quiz;
+          Question.findAll({where:{
+              quiz_id: quiz.id
+          }}).then(questions => {
+              quiz.questions = questions;
+              obj.quiz.questions = questions;
+              console.log(questions);
+              res.send(questions);
+              questions.forEach(function (question) {
+                  Choice.findAll({where:{
+                          question_id:question.id
+                      }}).then(choices =>{
+                          console.log(choices);
+
+                  })
+
+              })
+
+
+
+
+
+
+
+          })
+
+      })
+
+
+  });
   router.post('/', (req, res) => {
     Quiz
       .create({ title: req.body.title })
