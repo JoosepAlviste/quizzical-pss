@@ -9,18 +9,32 @@ type Props = {
 };
 
 class AnswerQuiz extends Component<Props> {
+
+
   props: Props;
   constructor(props) {
     super(props);
-    this.state = {count: 0};
+    this.state = {count: 0,
+                  showResults: true
+                };
     this.handleChange = this.handleChange.bind(this);
   }
   
-  handleChange(param) {
-    if (param.correct===true)
+  onClickHandler = ()=>{
+    this.setState(prev => ({showResults: !prev.showResults}));
+  };
+  
+handleChange(param,e) {
+  this.onClickHandler();
+  if (param.correct===true&&e.target.checked){
+
     this.state.count++;
-      console.log(this.state.count)
-}
+  }
+  if (param.correct===true&&!e.target.checked){
+    
+    this.state.count--;
+  }
+ }
 
   componentDidMount() {
     this.fetchQuiz();
@@ -34,51 +48,47 @@ class AnswerQuiz extends Component<Props> {
 
 
   render() {
+ 
     const { quiz } = this.props;
-    // Check console or Quiz type for structure
-    console.log(quiz);
-    
+
+    //If the request not successful: 
     let questionText='No Questions!!'
     let choice='No choices for this question!!!'
+    //===========================================
     
     if (this.props.quiz.questions) {
       questionText= quiz.questions.map((ques,i) =>
-      
-      ques.choices.map((f)=>
 
-      <div>
-          <li>{ques.text}</li>
+    <div key={i}>
 
-          <label>
-             
-            Correct :
+      <h1> Question: {ques.text}</h1>
+
+    {
+      ques.choices.map((f,x)=>
+
+      <div key={x}>
+          <label>             
+            Choice text:  {f.text}
               <input
                 name="choice"
                 type="checkbox"
-                // checked={false}
-                // checked={f.correct}
-                // onChange={() => console.log(f.correct)}
-                onChange={() => this.handleChange(f)}
+                onChange={(e) => this.handleChange(f,e)}
               />
             </label>
-            <p>{f.text}</p>
        </div>
 
       )
+    }
+    </div>
+
     );  
-   
 }
 
     return (
-      <div>
+      <div> 
           <span >Quiz {quiz.id} </span>
-          {quiz.title} 
           {questionText}
-          toBe Managed as intended:) 
-          <br/>
-          <button onClick={()=>console.log(this.state.count)}>Result</button>
-          {/* <button onClick={()=><div>{console.log(this.state.count)}Result </button> */}
-
+          <h1> Results: {this.state.count}</h1>
           <Link to="/">Home</Link>
       </div> 
     );  
