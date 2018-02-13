@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "dyzz462xx",
-    "database": "quiz_fun",
+    "database": "mydb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
