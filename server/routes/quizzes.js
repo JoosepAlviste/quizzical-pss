@@ -90,7 +90,71 @@ const routesFunction = (sequelize) => {
             });
     });
 
+    router.get('/delete/:quizID', function (req, res) {
+
+        Quiz.findById(req.params.quizID).then(quiz => {
+            quiz = {
+                id: quiz.id,
+                title: quiz.title
+            };
+            //obj.quiz = quiz;
+            // req.send(quiz);
+            Question.findAll({
+                where: {
+                    quiz_id: quiz.id
+                }
+            }).then(questions => {
+
+
+                //obj.questions = questions;
+                console.log(quiz);
+                //res.send(obj);
+
+                const promises = questions.map(function (question) {
+                    question = {
+                        id: question.id,
+                        text: question.text,
+                    };
+                     Choice.destroy({
+                        where: {
+                            question_id: question.id
+                        }
+                    })
+                });
+
+                Promise.all(promises).then(function() {
+                      Question.destroy(
+                          {
+                              where: {
+                                  quiz_id: quiz.id
+                              }
+                          }).then(function () {
+                          Quiz.destroy(
+                              {
+                                  where: {
+                                      id: quiz.id
+                                  }
+                              })
+
+                      });
+
+                    res.send("Quiz deleted");
+                })
+
+
+
+            })
+
+        })
+
+
+    });
+
+
+
     return router;
 };
+
+
 
 module.exports = routesFunction;
