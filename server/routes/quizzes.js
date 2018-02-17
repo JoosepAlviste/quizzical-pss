@@ -185,6 +185,17 @@ const routesFunction = (sequelize) => {
     
     });
 
+    router.put('/updateChoice/:choiceID', function (req, res) {
+
+        Choice.findById(req.params.choiceID).then(Choice => {
+            
+            Choice.update({ text: '99999', correct: '0' }, { fields: ['text'] ['correct'] }).then(() => {
+                res.send("Updated");
+            })
+        })
+
+    });
+
    
     return router;
 };
