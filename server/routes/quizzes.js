@@ -174,9 +174,20 @@ const routesFunction = (sequelize) => {
 
     });
 
+    router.put('/updateQuestion/:questionID', function (req, res) {
+
+        Question.findById(req.params.questionID).then(Question => {
+           
+            Question.update({ text: 'Changed Text' }, { fields: ['text'] }).then(() => {
+                res.send("Updated");
+            })
+        })
+    
+    });
+
+   
     return router;
 };
-
 
 
 module.exports = routesFunction;
