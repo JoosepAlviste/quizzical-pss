@@ -30,8 +30,6 @@ const routesFunction = (sequelize) => {
                     quiz_id: quiz.id
                 }
             }).then(questions => {
-
-
                 //obj.questions = questions;
                 console.log(quiz);
                 //res.send(obj);
@@ -150,7 +148,18 @@ const routesFunction = (sequelize) => {
 
     });
 
+    router.delete('/deleteQuestion/:questionID', function (req, res) {
 
+        Question.destroy(
+            {
+                where: {
+                    id: req.params.questionID
+                }
+                
+            })
+        res.send("deleted");     
+
+    });
 
     return router;
 };
