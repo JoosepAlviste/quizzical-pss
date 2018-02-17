@@ -196,6 +196,17 @@ const routesFunction = (sequelize) => {
 
     });
 
+    router.put('/updateQuiz/:quizID', function (req, res) {
+
+        Quiz.findById(req.params.quizID).then(Quiz => {
+
+            Quiz.update({ title: 'ChangedText2', update_at: Sequelize.DATE }, { title: ['text']['update_at'] }).then(() => {
+                res.send("Updated");
+            })
+        })
+
+    });
+
    
     return router;
 };
