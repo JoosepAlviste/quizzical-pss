@@ -157,7 +157,20 @@ const routesFunction = (sequelize) => {
                 }
                 
             })
-        res.send("deleted");     
+        res.send("Question Deleted ");     
+
+    });
+
+    router.delete('/deleteChoice/:choiceID', function (req, res) {
+
+        Choice.destroy(
+            {
+                where: {
+                    id: req.params.choiceID
+                }
+
+            })
+        res.send("Choice deleted");
 
     });
 
