@@ -174,33 +174,33 @@ const routesFunction = (sequelize) => {
 
     });
 
-    router.get('/updateQuestion/:questionID/:text', function (req, res) {
+    router.put('/updateQuestion/:questionID', function (req, res) {
 
         Question.findById(req.params.questionID).then(Question => {
             console.log(req.params);
-            Question.update({ text: req.params.text }, { fields: ['text'] }).then(() => {
+            Question.update({ text: req.body.text }, { fields: ['text'] }).then(() => {
                 res.send("Updated");
             })
         })
     
     });
 
-    router.get('/updateChoice/:choiceID/:text/:correct', function (req, res) {
+    router.put('/updateChoice/:choiceID', function (req, res) {
 
         Choice.findById(req.params.choiceID).then(Choice => {
             
-            Choice.update({ text: req.params.text, correct: req.params.correct }, { fields: ['text'] ['correct'] }).then(() => {
+            Choice.update({ text: req.body.text, correct: req.body.correct }, { fields: ['text'] ['correct'] }).then(() => {
                 res.send("Updated");
             })
         })
 
     });
 
-    router.get('/updateQuiz/:quizID/:text', function (req, res) {
+    router.put('/updateQuiz/:quizID', function (req, res) {
 
         Quiz.findById(req.params.quizID).then(Quiz => {
 
-            Quiz.update({ title: request.params.text, update_at: Sequelize.DATE }, { title: ['text']['update_at'] }).then(() => {
+            Quiz.update({ title: request.body.text, update_at: Sequelize.DATE }, { title: ['text']['update_at'] }).then(() => {
                 res.send("Updated");
             })
         })
