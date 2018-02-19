@@ -14,7 +14,9 @@ const testRoutes = require('./routes/testRoutes');
 app.use('/test', testRoutes);
 
 const quizzesRoutes = require('./routes/quizzes')(sequelize);
+const usersRoutes = require('./routes/users')(sequelize);
 app.use('/quizzes', quizzesRoutes);
+app.use('/users', usersRoutes);
 
 var server = app.listen(8080, function () {
   var host = server.address().address;
