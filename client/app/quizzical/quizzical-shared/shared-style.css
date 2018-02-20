@@ -27,3 +27,64 @@
     flex-direction: column;
     font-size: var(--font-size-md);
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif, Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+.container{
+    background:var(--white-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    flex: 1;
+
+}
+/*Mobiles and smaller*/
+
+@media(max-width: 725px) {
+    .container {
+        background: var(--black-color);
+    }
+    .footer {
+        background: var(--white-color);
+    }
+}
+
+@media(min-width: 925px) {
+    .container {
+        background:var(--primary-red);
+
+    }
+
+    .footer {
+        background: var(--black-color);
+    }
+}
+
+/*Desktop*/
+
+@media(min-width: 1170px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        background: var(--medium-grey-color);
+    }
+}
+
+/*Large screens */
+
+@media (min-width: 1300px) {
+    .container {
+        background: var(--primary-yellow);
+    }
+}
