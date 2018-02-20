@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import VisibleQuizzesList from '../containers/VisibleQuizzesList';
 import { fetchQuizzes } from '../actions';
+import styles from '../../quizzical/quizzical-shared/shared-style.css';
 
 type Props = {
   fetchQuizzes: () => void,
@@ -21,8 +22,8 @@ class QuizzesPage extends Component<Props> {
 
   render() {
     return (
-      <div className="page--padding-top">
-        <div className="container">
+      <div className="page--padding-top"  >
+        <div className={styles.container}>
           <Link className="back-button" to="/">
             <i className="fa fa-arrow-left fa-3x" />
           </Link>
