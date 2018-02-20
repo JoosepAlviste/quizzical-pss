@@ -12,15 +12,26 @@ class AnswerQuiz extends Component<Props> {
   props: Props;
   constructor(props) {
     super(props);
-    this.state = {count: 0};
+    this.state = {
+      count: 0,
+      showResults: true
+    };
     this.handleChange = this.handleChange.bind(this);
   }
-  
-  handleChange(param) {
-    if (param.correct===true)
-    this.state.count++;
-      console.log(this.state.count)
-}
+
+  onClickHandler = () => {
+    this.setState(prev => ({ showResults: !prev.showResults }));
+  };
+
+  handleChange(param, e) {
+    this.onClickHandler();
+    if (param.correct === true && e.target.checked) {
+      this.state.count++;
+    }
+    if (param.correct === true && !e.target.checked) {
+      this.state.count--;
+    }
+  }
 
   componentDidMount() {
     this.fetchQuiz();
@@ -35,55 +46,46 @@ class AnswerQuiz extends Component<Props> {
 
   render() {
     const { quiz } = this.props;
-    // Check console or Quiz type for structure
-    console.log(quiz);
-    
-    let questionText='No Questions!!'
-    let choice='No choices for this question!!!'
-    
+
+    // If the request not successful:
+    let questionText = 'No Questions!!';
+    const choice = 'No choices for this question!!!';
+    //= ==========================================
+
     if (this.props.quiz.questions) {
-      questionText= quiz.questions.map((ques,i) =>
-      
-      ques.choices.map((f)=>
+      questionText = quiz.questions.map((ques, i) =>
 
-      <div>
-          <li>{ques.text}</li>
+        (<div key={i}>
 
+          <h1> Question: {ques.text}</h1>
+
+          {
+      ques.choices.map((f, x) =>
+
+        (<div key={x}>
           <label>
-             
-            Correct :
-              <input
-                name="choice"
-                type="checkbox"
-                // checked={false}
-                // checked={f.correct}
-                // onChange={() => console.log(f.correct)}
-                onChange={() => this.handleChange(f)}
-              />
-            </label>
-            <p>{f.text}</p>
-       </div>
-
-      )
-    );  
-   
-}
+            Choice text:  {f.text}
+            <input
+              name="choice"
+              type="checkbox"
+              onChange={(e) => this.handleChange(f, e)}
+            />
+          </label>
+        </div>
+))
+    }
+         </div>));
+    }
 
     return (
       <div>
-          <span >Quiz {quiz.id} </span>
-          {quiz.title} 
-          {questionText}
-          toBe Managed as intended:) 
-          <br/>
-          <button onClick={()=>console.log(this.state.count)}>Result</button>
-          {/* <button onClick={()=><div>{console.log(this.state.count)}Result </button> */}
-
-          <Link to="/">Home</Link>
-      </div> 
-    );  
-  
-}
+        <span >Quiz {quiz.id} </span>
+        {questionText}
+        <h1> Results: {this.state.count}</h1>
+        <Link to="/">Home</Link>
+      </div>
+    );
+  }
 }
 AnswerQuiz.defaultProps = {
   quiz: null,
