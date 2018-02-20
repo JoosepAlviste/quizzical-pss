@@ -1,0 +1,29 @@
+/* These are the initial shared properties  */
+:root {
+    --baseline: 2.4rem;
+    --line-height: 1.2;
+    --line-height-comfort: 1.6;
+    --padding: 1.6rem;
+    --font-size-xs: 1.2rem;
+    --font-size-sm: 1.4rem;
+    --font-size-md: 1.6rem;
+    --font-size-lg: 1.8rem;
+    --xxs: calc(var(--baseline) / 3);
+    --xs: calc(var(--baseline) / 2);
+    --sm: calc(var(--baseline) / 1.5);
+    --md: var(--baseline);
+    --lg: calc(var(--baseline) * 1.5);
+    --xl: calc(var(--baseline) * 2);
+    --xxl: calc(var(--baseline) * 3);
+    --white-color: #FFFFFF;
+    --primary-red: #BD0017;
+    --primary-green: #3A4C02;
+    --primary-yellow: #FFD600;
+    --black-color: #2E2E2E;
+    --medium-grey-color: #8E8E8E;
+    --light-grey-color: #E3E3E3;
+    --background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-md);
+}
