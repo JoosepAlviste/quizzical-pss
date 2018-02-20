@@ -1,20 +1,16 @@
-# Quizzical
+# Master branch copy
 
-A quiz application for creating and taking quizzes on various subjects.
+This branch is a copy of the master where the client is connected to the mock server!
 
 ## Structure
 
-The project consists of 2 parts: the server in the `server/` directory and the client-side desktop application in the `client/` directory. In order to use the application both server and client need to be set up.
+In this branch you will not find a lot of changes but, some urgent commits for this week.
 
 ## Set up
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/JoosepAlviste/quizzical.git
+Use branch checkout to use this branch. 
 ```
 
-Follow the readme files in the server and the desktop app directories to set both of them up.
-
-* `server/README.md`
-* `client/README.md`
