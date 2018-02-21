@@ -8,12 +8,9 @@ const routesFunction = (sequelize) => {
     const User = require('../models/users')(sequelize, Sequelize.DataTypes);
 
     router.post('/', (req, res) => {
-        var data = "do shash'owania";
-        
-        
         User.create({email: req.body.email,
                  name: req.body.name,
-                 password: crypto.createHash('md5').update(eq.body.password).digest("hex");
+                 password: crypto.createHash('md5').update(req.body.password).digest("hex"),
         })
 
          res.status(200).send("OK");
