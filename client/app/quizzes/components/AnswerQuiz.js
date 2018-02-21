@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Quiz } from '../reducers/answerQuiz';
 import { Link } from 'react-router-dom';
+import styles from './QuizzesList.scss';
+import styles1 from '../../quizzical/quizzical-shared/shared-style.css';
 
 type Props = {
   quiz?: Quiz,
@@ -55,22 +57,22 @@ class AnswerQuiz extends Component<Props> {
     if (this.props.quiz.questions) {
       questionText = quiz.questions.map((ques, i) =>
 
-        (<div key={i}>
+        (<div key={i} className={styles.quizzesListItem}>
 
           <h1> Question: {ques.text}</h1>
 
           {
       ques.choices.map((f, x) =>
 
-        (<div key={x}>
+        (<div key={x} >
           <label>
-            Choice text:  {f.text}
-            <input
-              name="choice"
-              type="checkbox"
-              onChange={(e) => this.handleChange(f, e)}
-            />
+            {f.text}
           </label>
+          <input
+            name="choice"
+            type="checkbox"
+            onChange={(e) => this.handleChange(f, e)}
+          />
         </div>
 ))
     }
@@ -78,11 +80,14 @@ class AnswerQuiz extends Component<Props> {
     }
 
     return (
-      <div>
-        <span >Quiz {quiz.id} </span>
+      <div className={styles1.container}>
+        <Link className="back-button" to="/">
+          <i className="fa fa-arrow-left fa-3x" />
+        </Link>
+        
         {questionText}
-        <h1> Results: {this.state.count}</h1>
-        <Link to="/">Home</Link>
+
+        <span className="button is-info"> Results {this.state.count}</span>
       </div>
     );
   }

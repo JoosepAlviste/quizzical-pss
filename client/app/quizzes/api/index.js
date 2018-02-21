@@ -24,3 +24,11 @@ export const storeQuiz = (quiz: Quiz): Promise<QuizCreateResponse> =>
 // Get the quiz using with based on the specific ID
 export const fetchQuiz = (quizId: number): Promise<AnswerQuiz> =>
   axios.get(`https://2eacf2d7-bcd6-4ca9-bb15-0933307fac6e.mock.pstmn.io/quizzes/${quizId}`).then(response => response.data);
+
+
+/*
+==================================================
+This link should be replaced wit a server expose link  :
+https://2eacf2d7-bcd6-4ca9-bb15-0933307fac6e.mock.pstmn.io/user
+==================================================
+*/

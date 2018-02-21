@@ -6,12 +6,31 @@ $colors: (
   $turquoise,
 );
 
+// .quizzesList {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-gap: 10px 10px;
+//   padding-bottom: 20px;
+// }
 .quizzesList {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px 10px;
-  padding-bottom: 20px;
+display: flex;
+flex-direction: row;
 }
+label {
+  /* Other styling.. */
+  text-align: right;
+  clear: both;
+  float: left;
+  margin-right:15px;
+}
+input[type="checkbox"], input[type="radio"] {
+  vertical-align: baseline;
+  float: right;
+  margin-left: 33+px;
+  border: black;
+  font-size: larger;
+}
+
 
 .quizzesListItem {
   background: #fff;
@@ -32,5 +51,28 @@ $colors: (
   &:hover {
     color: lighten(#333, 15%);
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.15);
+  }
+}
+
+
+
+
+@media(max-width: 725px) {
+  .quizzesList {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    text-align: center;
+  }
+}
+
+@media(min-width: 925px) {
+  .container {
+      background:var(--primary-white);
+
+  }
+
+  .footer {
+      background: var(--black-color);
   }
 }

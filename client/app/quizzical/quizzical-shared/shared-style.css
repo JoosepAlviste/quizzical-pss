@@ -43,7 +43,14 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+input{
+ 
+}
 .footer {
     display: flex;
     flex: 1;

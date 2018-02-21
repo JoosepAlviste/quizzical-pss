@@ -17,6 +17,8 @@ export default class Home extends Component<Props> {
 
           <Link to="/counter">Counter</Link><br />
           <Link to="/quizzes">Quizzes</Link>
+          <Link to="/reg">Registration</Link>
+
         </div>
 
       </div>
