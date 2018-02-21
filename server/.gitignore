@@ -1,5 +1,7 @@
 # .gitignore from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+config/config.json
+
 *.njsproj
 *.sln
 obj/
