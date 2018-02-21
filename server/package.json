@@ -15,6 +15,7 @@
   },
   "scripts": {
     "run": "node server.js",
-    "migrate": "sequelize db:migrate"
+    "db:migrate": "sequelize db:migrate",
+    "db:create": "sequelize db:create"
   }
 }
