@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "dyzz462xx",
-    "database": "mydb",
+    "password": "toor",
+    "database": "quizzical",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

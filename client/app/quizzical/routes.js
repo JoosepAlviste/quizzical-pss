@@ -7,10 +7,12 @@ import CounterPage from '../counter/containers/CounterPage';
 import QuizzesPage from '../quizzes/containers/QuizzesPage';
 import CreateQuizPage from '../quizzes/containers/CreateQuizPage';
 import AnswerQuizPage from '../quizzes/containers/AnswerQuizPage';
+import RegisterPage from '../auth/components/RegisterPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route path="/register" component={RegisterPage} />
       <Route path="/counter" component={CounterPage} />
       <Route path="/quizzes/create" component={CreateQuizPage} />
       <Route path="/quizzes/:quizId" component={AnswerQuizPage} />

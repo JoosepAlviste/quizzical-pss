@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import Input from './Input';
 
@@ -6,6 +7,7 @@ type Props = {
   name: string,
   value: string,
   onChange: (Event) => void,
+  type?: string,
 };
 
 const TextField = (props: Props) => (
@@ -15,7 +17,7 @@ const TextField = (props: Props) => (
       <div className="control">
         <Input
           name={props.name}
-          type="text"
+          type={props.type}
           value={props.value}
           onChange={props.onChange}
         />
@@ -23,5 +25,9 @@ const TextField = (props: Props) => (
     </label>
   </div>
 );
+
+TextField.defaultProps = {
+  type: 'text',
+};
 
 export default TextField;
