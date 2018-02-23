@@ -33,6 +33,8 @@ p {
     max-width: 970px;
     margin: 0 auto;
     min-height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
     .content__text {
@@ -45,10 +47,10 @@ p {
         flex: 3;
 
         padding-bottom: 100px;
-        padding-left: 20px;
+        padding-left: 50px;
     }
 
-        .content__screenshot img {
+        .content__screenshot > img {
             display: block;
             width: 100%;
 
@@ -58,6 +60,25 @@ p {
     .content__description {
         margin-bottom: 100px;
     }
+
+@media (max-width: 720px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .content__text {
+        padding-bottom: 50px;
+    }
+
+    .content__description {
+        margin-bottom: 50px;
+    }
+
+    .content__screenshot {
+        padding-left:  0;
+    }
+}
+
 
 .download__container {
     display: inline-flex;
