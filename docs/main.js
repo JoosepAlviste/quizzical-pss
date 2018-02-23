@@ -45,11 +45,11 @@ function setDownloadLinks() {
 
 function getDownloadPath(os) {
   if (os === 'MacOS') {
-    return 'assets/releases/Quizzical.dmg';
+    return 'https://github.com/JoosepAlviste/quizzical/releases/download/0.1.0/Quizzical.dmg';
   } else if (os === 'Windows') {
-    return 'assets/releases/Quizzical Setup.exe';
+    return 'https://github.com/JoosepAlviste/quizzical/releases/download/0.1.0/Quizzical.Setup.exe';
   } else if (os === 'Linux') {
-    return 'assets/releases/Quizzical.AppImage';
+    return 'https://github.com/JoosepAlviste/quizzical/releases/download/0.1.0/Quizzical.AppImage';
   }
 }
 
