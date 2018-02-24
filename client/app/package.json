@@ -1,7 +1,7 @@
 {
   "name": "quizzical",
   "productName": "Quizzical",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "A quiz application for creating and taking quizzes",
   "main": "./main.prod.js",
   "author": {
