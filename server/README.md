@@ -48,5 +48,6 @@ What things you need to install the software and how to install them:
 | Name    | Email  |
 |--|--|
 | `Alexandros Patsanis` | `alexpatsanis@gmail.com` |
+| `Iosif ` | `Iosif.Kakalelis.4464@student.uu.se` |
 
-> For any questions  contant me 
+> For any questions  contant us 
