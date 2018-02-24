@@ -43,7 +43,7 @@ What things you need to install the software and how to install them:
 	 ```
 	 > Now you are able to see the server running ![enter image description here](https://lh3.googleusercontent.com/Cd8bcSTsKhzxw0TwogFYjj-5x1zTnVT0M26R8SN2cWSHTmgS-KFl9AOtozdNB0vuHtD6WgGqYKW8)
 
-## Arthur
+## Arthurs
     
 | Name    | Email  |
 |--|--|
