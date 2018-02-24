@@ -1,10 +1,10 @@
 var primaryOS = '';
 
-var downloadLinks = [
+var downloadLinks = {
   'MacOS': 'https://github.com/JoosepAlviste/quizzical/releases/download/v0.2.0/Quizzical-0.2.0.dmg',
   'Windows': 'https://github.com/JoosepAlviste/quizzical/releases/download/v0.2.0/Quizzical.Setup.0.2.0.exe',
   'Linux': 'https://github.com/JoosepAlviste/quizzical/releases/download/v0.2.0/quizzical-0.2.0-x86_64.AppImage',
-];
+};
 
 function getOS() {
   var os = 'Unknown OS';
