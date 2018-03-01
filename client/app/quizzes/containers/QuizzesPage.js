@@ -27,16 +27,18 @@ class QuizzesPage extends Component<Props> {
             <i className="fa fa-arrow-left fa-3x" />
           </Link>
 
-          <h1 className="title has-text-centered">Quizzes!</h1>
+          <h1 className="title has-text-centered">Quizzes</h1>
 
           <VisibleQuizzesList />
 
-          <Link
-            className="button is-info"
-            to="/quizzes/create"
-          >
-            Create a new Quiz
-          </Link>
+          <div className="has-text-centered">
+            <Link
+              className="button is-primary button--main-action"
+              to="/quizzes/create"
+            >
+              Create new
+            </Link>
+          </div>
         </div>
       </div>
     );

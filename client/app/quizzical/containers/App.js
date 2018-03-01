@@ -14,11 +14,9 @@ export default class App extends React.Component<Props> {
       <div className="app">
         <nav className="navbar is-info">
           <div className="navbar-end">
-            {/*<div className="navbar-item">*/}
-              <Link to="/register" className="navbar-item">
-                Register
-              </Link>
-            {/*</div>*/}
+            <Link to="/register" className="navbar-item">
+              Register
+            </Link>
           </div>
         </nav>
 
