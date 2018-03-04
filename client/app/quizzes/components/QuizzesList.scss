@@ -1,17 +1,37 @@
 @import '../../scss/utilities/all';
 
+<<<<<<< HEAD
 $colors: (
   $yellow,
   $purple,
   $turquoise,
 );
 
+// .quizzesList {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-gap: 10px 10px;
+//   padding-bottom: 20px;
+// }
 .quizzesList {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px 10px;
-  padding-bottom: 20px;
+display: flex;
+flex-direction: row;
 }
+label {
+  /* Other styling.. */
+  // text-align: right;
+  // clear: both;
+  // float: left;
+  // margin-right:15px;
+}
+input[type="checkbox"], input[type="radio"] {
+  // vertical-align: baseline;
+  // float: right;
+   margin-right: 15px;
+  // border: black;
+  // font-size: larger;
+}
+
 
 .quizzesListItem {
   background: #fff;
@@ -20,17 +40,68 @@ $colors: (
   box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
   color: #333;
   transition: box-shadow 250ms ease-in;
+=======
+.quizzesList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px 70px;
+  padding-bottom: 80px;
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 
-  @for $i from 1 through length($colors) {
-    $color: nth($colors, $i);
-
-    &:nth-child(#{length($colors)}n + #{$i}) {
-      border-left-color: $color;
-    }
+  @include until($desktop) {
+    grid-gap: 20px 50px;
+    padding-left:  10px;
+    padding-right: 10px;
   }
+
+  @include until($tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 150ms ease-in,
+    box-shadow 150ms ease-in;
 
   &:hover {
-    color: lighten(#333, 15%);
-    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.15);
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.15);
   }
+}
+
+<<<<<<< HEAD
+
+
+
+@media(max-width: 725px) {
+  .quizzesList {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    text-align: center;
+  }
+}
+
+@media(min-width: 925px) {
+  .container {
+      background:var(--primary-white);
+
+  }
+
+  .footer {
+      background: var(--black-color);
+  }
+=======
+.strong {
+  color: $grey-dark;
+}
+
+.normal,
+.normal:hover {
+  color: $text;
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 }

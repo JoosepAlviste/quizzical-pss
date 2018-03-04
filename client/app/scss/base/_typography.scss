@@ -1,0 +1,10 @@
+@import '../utilities/all';
+
+strong {
+  color: $grey-dark;
+}
+
+.page-title {
+  margin-bottom: $title-margin-bottom;
+  text-align: center;
+}

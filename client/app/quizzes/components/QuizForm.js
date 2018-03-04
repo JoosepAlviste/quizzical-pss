@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from '../../quizzical/elements/TextField';
 import SubmitField from '../../quizzical/elements/SubmitField';
 import Button from '../../quizzical/elements/Button';
+import styles1 from '../../quizzical/quizzical-shared/shared-style.css';
 
 type Props = {
   title: string,
@@ -43,7 +44,7 @@ class QuizForm extends Component<Props> {
     } = this.props;
 
     return (
-      <form onSubmit={this.onFormSubmitted}>
+      <form onSubmit={this.onFormSubmitted} className={styles1.container}>
         <TextField
           label="Title"
           name="title"
@@ -108,7 +109,7 @@ class QuizForm extends Component<Props> {
           Add a question
         </Button>
 
-        <hr />
+
 
         <SubmitField>
           Save

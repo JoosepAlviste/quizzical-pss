@@ -1,11 +1,20 @@
 .page--padding-top {
+<<<<<<< HEAD
+  // padding-top: 40px;
+=======
   padding-top: 40px;
+  padding-bottom: 80px;
+
+  .title {
+    margin-bottom: 60px;
+  }
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 }
 
 .back-button {
-  color: #333;
+  color: $grey-dark;
 
   &:hover {
-    color: #444;
+    color: $grey;
   }
 }
