@@ -14,10 +14,17 @@ const QuizzesList = (props: Props) => (
     {props.quizzes.map(quiz => (
       <Link
         key={quiz.id}
-        className={styles.quizzesListItem}
+        className={`card ${styles.item}`}
         to={`/quizzes/${quiz.id}`}
       >
-        {quiz.title}
+        <h2 className="subtitle">
+          {quiz.title}
+        </h2>
+
+        <div>
+          <span className={styles.normal}>by:</span>&nbsp;
+          <strong className={styles.strong}>Test User</strong>
+        </div>
       </Link>
     ))}
   </div>

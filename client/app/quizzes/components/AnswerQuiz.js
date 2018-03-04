@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Quiz } from '../reducers/answerQuiz';
 import { Link } from 'react-router-dom';
+import styles from './QuizzesList.scss';
+import styles1 from '../../quizzical/quizzical-shared/shared-style.css';
 
 type Props = {
   quiz?: Quiz,
@@ -9,32 +11,29 @@ type Props = {
 };
 
 class AnswerQuiz extends Component<Props> {
-
-
   props: Props;
   constructor(props) {
     super(props);
-    this.state = {count: 0,
-                  showResults: true
-                };
+    this.state = {
+      count: 0,
+      showResults: true
+    };
     this.handleChange = this.handleChange.bind(this);
   }
-  
-  onClickHandler = ()=>{
-    this.setState(prev => ({showResults: !prev.showResults}));
-  };
-  
-handleChange(param,e) {
-  this.onClickHandler();
-  if (param.correct===true&&e.target.checked){
 
-    this.state.count++;
+  onClickHandler = () => {
+    this.setState(prev => ({ showResults: !prev.showResults }));
+  };
+
+  handleChange(param, e) {
+    this.onClickHandler();
+    if (param.correct === true && e.target.checked) {
+      this.state.count++;
+    }
+    if (param.correct === true && !e.target.checked) {
+      this.state.count--;
+    }
   }
-  if (param.correct===true&&!e.target.checked){
-    
-    this.state.count--;
-  }
- }
 
   componentDidMount() {
     this.fetchQuiz();
@@ -48,55 +47,55 @@ handleChange(param,e) {
 
 
   render() {
- 
     const { quiz } = this.props;
 
-    //If the request not successful: 
-    let questionText='No Questions!!'
-    let choice='No choices for this question!!!'
-    //===========================================
-    
+    // If the request not successful:
+    let questionText = 'No Questions!!';
+    const choice = 'No choices for this question!!!';
+    //= ==========================================
+
     if (this.props.quiz.questions) {
-      questionText= quiz.questions.map((ques,i) =>
+      questionText = quiz.questions.map((ques, i) =>
 
-    <div key={i}>
+        (<div key={i} className={styles.quizzesListItem}>
 
-      <h1> Question: {ques.text}</h1>
+          <h1 className={styles1.header_text}> Question: {ques.text}</h1>
 
-    {
-      ques.choices.map((f,x)=>
+          {
+      ques.choices.map((f, x) =>
 
-      <div key={x}>
-          <label>             
-            Choice text:  {f.text}
-              <input
-                name="choice"
-                type="checkbox"
-                onChange={(e) => this.handleChange(f,e)}
-              />
-            </label>
-       </div>
-
-      )
+      (<div key={x} >
+        <input
+          name="choice"
+          type="checkbox"
+          onChange={(e) => this.handleChange(f, e)}
+        />
+          <label>
+            {f.text}
+          </label>
+        </div>
+))
     }
-    </div>
-
-    );  
-}
+         </div>));
+    }
 
     return (
-      <div> 
-          <span >Quiz {quiz.id} </span>
-          {questionText}
-          <h1> Results: {this.state.count}</h1>
-          <Link to="/">Home</Link>
-      </div> 
-    );  
-  
-}
+      <div className={styles1.container}>
+        <Link className="back-button" to="/">
+          <i className="fa fa-arrow-left fa-3x" />
+        </Link>
+        
+        {questionText}
+
+        <span className="button is-info"> Results {this.state.count}</span>
+        {/* <span className="button is-info" onClick={alert('test')}>  Results {this.state.count}</span> */}
+      </div>
+    );
+  }
 }
 AnswerQuiz.defaultProps = {
   quiz: null,
 };
 
 export default AnswerQuiz;
+
