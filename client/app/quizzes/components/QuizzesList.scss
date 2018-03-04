@@ -1,6 +1,7 @@
 @import '../../scss/utilities/all';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $colors: (
   $yellow,
   $purple,
@@ -42,10 +43,16 @@ input[type="checkbox"], input[type="radio"] {
   transition: box-shadow 250ms ease-in;
 =======
 .quizzesList {
+=======
+.quizzesList {
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px 70px;
   padding-bottom: 80px;
+<<<<<<< HEAD
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
+=======
 >>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 
   @include until($desktop) {
@@ -74,6 +81,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -96,6 +104,8 @@ input[type="checkbox"], input[type="radio"] {
       background: var(--black-color);
   }
 =======
+=======
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 .strong {
   color: $grey-dark;
 }
@@ -103,5 +113,8 @@ input[type="checkbox"], input[type="radio"] {
 .normal,
 .normal:hover {
   color: $text;
+<<<<<<< HEAD
+>>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
+=======
 >>>>>>> 99d0bf3664c5dc9203a0fcae80a18e9ac80a6fba
 }
