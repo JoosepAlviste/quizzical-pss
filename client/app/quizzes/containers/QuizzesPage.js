@@ -25,7 +25,7 @@ class QuizzesPage extends Component<Props> {
       <div className="page--padding-top"  >
         <div className={styles.container}>
           <Link className="back-button" to="/">
-            <i className="fa fa-arrow-left fa-3x" />
+            <i className="fa fa-angle-left fa-3x" />
           </Link>
 
           <h1 className="title has-text-centered">Quizzes!</h1>
