@@ -3,6 +3,7 @@ import { Quiz } from '../reducers/answerQuiz';
 import { Link } from 'react-router-dom';
 import styles from './QuizzesList.scss';
 import styles1 from '../../quizzical/quizzical-shared/shared-style.css';
+import Popup from 'react-popup';
 
 type Props = {
   quiz?: Quiz,
@@ -10,15 +11,38 @@ type Props = {
   fetchQuiz: (number) => void,
 };
 
+class Popups extends React.Component {
+  render() {
+    return (
+      <div  className={styles1.popup}>
+        <div className={styles1.popup_inner}>
+        <h1>{this.props.text}</h1>
+        <h1>Correct Select {this.props.score}</h1>
+        <h1>Wrong Select {this.props.wrong}</h1>
+        <button  onClick={this.props.closePopup}>Close</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+
 class AnswerQuiz extends Component<Props> {
   props: Props;
   constructor(props) {
     super(props);
     this.state = {
       count: 0,
-      showResults: true
+      wrong:0,
+      showResults: true,
+      showPopup: false
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   onClickHandler = () => {
@@ -33,6 +57,13 @@ class AnswerQuiz extends Component<Props> {
     if (param.correct === true && !e.target.checked) {
       this.state.count--;
     }
+    if (!param.correct === true && e.target.checked) {
+      this.state.wrong++;
+    }
+    if (!param.correct === true &&!e.target.checked) {
+      this.state.wrong--;
+    }
+
   }
 
   componentDidMount() {
@@ -45,7 +76,7 @@ class AnswerQuiz extends Component<Props> {
     fetchQuiz(parseInt(match.params.quizId, 10));
   }
 
-
+ 
   render() {
     const { quiz } = this.props;
 
@@ -64,15 +95,15 @@ class AnswerQuiz extends Component<Props> {
           {
       ques.choices.map((f, x) =>
 
-        (<div key={x} >
-          <label>
-            {f.text}
-          </label>
+        (<div key={x} className="test">
           <input
             name="choice"
             type="checkbox"
             onChange={(e) => this.handleChange(f, e)}
           />
+          <label>
+            {f.text}
+          </label>
         </div>
 ))
     }
@@ -82,12 +113,29 @@ class AnswerQuiz extends Component<Props> {
     return (
       <div className={styles1.container}>
         <Link className="back-button" to="/">
-          <i className="fa fa-arrow-left fa-3x" />
+          <i className="fa fa-angle-left  fa-3x" />
         </Link>
-        
+        <h1 className="title has-text-centered">Questions</h1>
+
         {questionText}
 
-        <span className="button is-info"> Results {this.state.count}</span>
+        <button className="button is-info"  onClick={this.togglePopup.bind(this)}> Show Score </button>
+    
+        <div>
+        {this.state.showPopup ? 
+          <Popups
+            // text={`Total:${this.state.count}`}
+            text="Final Score"
+            score={this.state.count}
+            wrong={this.state.wrong}
+            closePopup={this.togglePopup.bind(this)}
+
+          />
+          : null
+        }
+      </div>
+     
+
       </div>
     );
   }
