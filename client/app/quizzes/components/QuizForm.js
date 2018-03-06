@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from '../../quizzical/elements/TextField';
 import SubmitField from '../../quizzical/elements/SubmitField';
 import Button from '../../quizzical/elements/Button';
+import styles from './QuizForm.scss';
 
 type Props = {
   title: string,
@@ -42,19 +43,23 @@ class QuizForm extends Component<Props> {
       onChoiceCorrectToggled,
     } = this.props;
 
+const choicesStyle={color:'black', background:'cadetblue' ,
+marginBottom:'30px', height:'50px',paddingTop:'2%'
+}
+
     return (
       <form onSubmit={this.onFormSubmitted}>
-        <TextField
-          label="Title"
+        <TextField 
+          label="QUIZ TITLE"
           name="title"
           value={title}
           onChange={e => onTitleChanged(e.target.value)}
         />
 
-        <h2 className="subtitle is-2">Questions</h2>
+        {/* <h4 style={{color:'red', background:'cadetblue'}}>Questions</h4> */}
 
         {questions.map(question => (
-          <div key={question.tempId}>
+          <div key={question.tempId} style={{lineHeight:'1'}}> 
             <TextField
               label="Question text"
               name={`question-text-${question.tempId}`}
@@ -62,7 +67,7 @@ class QuizForm extends Component<Props> {
               onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
             />
 
-            <h3 className="subtitle is-4">Choices</h3>
+            <h3 style={choicesStyle}>Choices</h3>
 
             {question.choices.map(choice => (
               <div key={choice.tempId} className="field is-grouped">
