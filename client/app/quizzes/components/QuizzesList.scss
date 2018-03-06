@@ -14,21 +14,24 @@ $colors: (
 // }
 .quizzesList {
 display: flex;
-flex-direction: row;
+flex-direction: column;
+text-align: center;
+
 }
 label {
   /* Other styling.. */
   text-align: right;
   clear: both;
-  float: left;
+  // float: left;
   margin-right:15px;
 }
 input[type="checkbox"], input[type="radio"] {
   vertical-align: baseline;
-  float: right;
-  margin-left: 33+px;
+  float: left;
+  // margin-left: 33+px;
   border: black;
   font-size: larger;
+  margin: 10px;
 }
 
 
@@ -66,13 +69,13 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-@media(min-width: 925px) {
-  .container {
-      background:var(--primary-white);
+// @media(min-width: 925px) {
+//   .container {
+//       background:var(--primary-white);
 
-  }
+//   }
 
-  .footer {
-      background: var(--black-color);
-  }
-}
+//   .footer {
+//       background: var(--black-color);
+//   }
+// }
