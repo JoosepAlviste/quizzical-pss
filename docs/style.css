@@ -25,6 +25,11 @@ p {
     font-weight: 400;
 }
 
+a,
+a:visited {
+    color: #0b79bd;
+}
+
 .content {
     display: flex;
     align-items: center;
@@ -132,6 +137,7 @@ p {
 
 #download-dropdown:checked ~ .download__dropdown .download__dropdown-item {
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .download__dropdown {
@@ -180,6 +186,8 @@ p {
     font-size: 1rem;
     user-select: none;
     text-decoration: none;
+
+    pointer-events: none;
 }
 
 .download__dropdown-item:hover {
