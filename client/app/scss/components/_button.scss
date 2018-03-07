@@ -1,0 +1,28 @@
+@import '../utilities/all';
+
+.button--main-action {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  padding: 0 100px;
+  border-radius: $radius;
+  font-weight: $weight-bold;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  transition:
+    transform 150ms ease-in,
+    box-shadow 150ms ease-in;
+
+  &.button:hover {
+    background-color: $primary;
+    transform: translate3d(0, -1px, 0);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+.button {
+  font-weight: $weight-bold;
+
+  &.is-wide {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}

@@ -17,11 +17,14 @@ What things you need to install the software and how to install them:
 ![enter image description here](https://lh3.googleusercontent.com/Dagxin5QKc5q6PVjBnutIHYRnDAF71jTHXiaCWq5LKPIgfk7nmGHfdRCRigZf5Sqnn-SBnZeFEsT)
 
 	>Now in you go `cd config` and If you commant `dir` for windows or `ls`for linux you will get: 
-	>![enter image description here](https://lh3.googleusercontent.com/0FOTwLhjXPgtxZgEHCw32tceHI3jKOqgrfgelBRMfq4xYODg0sVdFrdynphojf0FcGjW2DBxjHX_)
+	>![enter image description here](https://lh3.googleusercontent.com/B5Hbr-y8EKiaVrkhbv_ix385Dw5T-EGS6e-5URGV1Gw5O5uJk-RdGfJBCNA2bNW2-lYixTwfXiWY)
  2. **Second Step:**  Configuring. 
 	```bash
 	cp config/config.example.json config/config.json
+	
 	```
+	>Now in you go `cd config` and If you commant `dir` for windows or `ls`for linux you will get: 
+	![enter image description here](https://lh3.googleusercontent.com/5g5xoUfLa6dJyyJWHp57DagDSJZVQjdrWegbHfUrMVsuRmO4Sr01lMZBCQ2Tb40xGorXmFxMx_pt)
  3. -**Third Step:** Insert your database info to the config/config.json file. 	 ![enter image description here](https://lh3.googleusercontent.com/OMkq2-tDHoU2igSx_xjmOnXnPOQNje_vAo4k7GU6afjzr871bWDTGkxbCq-wY8gCkcrpv2EpxBtw)
  4. Install packages
 
@@ -43,11 +46,13 @@ What things you need to install the software and how to install them:
 	 ```
 	 > Now you are able to see the server running ![enter image description here](https://lh3.googleusercontent.com/Cd8bcSTsKhzxw0TwogFYjj-5x1zTnVT0M26R8SN2cWSHTmgS-KFl9AOtozdNB0vuHtD6WgGqYKW8)
 
-## Arthurs
+
+## Authors
     
 | Name    | Email  |
 |--|--|
 | `Alexandros Patsanis` | `alexpatsanis@gmail.com` |
-| `Iosif ` | `Iosif.Kakalelis.4464@student.uu.se` |
+| `Iosif Kakalelis` | `Iosif.Kakalelis.4464@student.uu.se` |
 
-> For any questions  contant us 
+> For any questions  contact us 
+		

@@ -1,0 +1,15 @@
+@import '../utilities/all';
+
+.modal-card {
+  box-shadow: $card-shadow;
+}
+
+.modal-card-head,
+.modal-card-foot {
+  justify-content: center;
+}
+
+.modal-card-foot {
+  background: $modal-card-foot-background-color;
+  padding: $modal-card-foot-padding;
+}

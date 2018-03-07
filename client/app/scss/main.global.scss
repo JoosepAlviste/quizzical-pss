@@ -1,7 +1,15 @@
 /*
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
+ *
+ * This project uses the 7-1 pattern(-ish) for structuring SCSS. Some React
+ * components have local styles which use separate SCSS files in the same
+ * directory as the component. Those styles are loaded with CSS modules and are
+ * local to the component (have no effect globally).
+ *
+ * https://sass-guidelin.es/#the-7-1-pattern
  */
+
 @import "~font-awesome/css/font-awesome.css";
 @import
   'utilities/all',
