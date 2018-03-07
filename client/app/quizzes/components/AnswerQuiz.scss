@@ -1,0 +1,15 @@
+.question {
+  margin-bottom: 50px;
+}
+
+.radio {
+  margin-right: 15px;
+}
+
+.choiceControl {
+  margin-bottom: 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

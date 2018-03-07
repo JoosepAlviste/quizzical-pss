@@ -1,0 +1,8 @@
+@import '../utilities/all';
+
+.container {
+  @include from($widescreen) {
+    max-width: $desktop - (2 * $gap);
+    width: $desktop - (2 * $gap);
+  }
+}

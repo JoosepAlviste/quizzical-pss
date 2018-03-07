@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchQuiz(id) {
-    dispatch(fetchQuiz(id));
+    return dispatch(fetchQuiz(id));
   },
 });
 

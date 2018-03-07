@@ -1,5 +1,7 @@
+@import '../utilities/all';
+
 .page--padding-top {
-  padding-top: 40px;
+  padding-top: calc(40px + #{$navbar-height});
   padding-bottom: 80px;
 
   .title {

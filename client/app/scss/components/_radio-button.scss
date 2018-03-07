@@ -1,0 +1,56 @@
+/**
+ * With help from https://codepen.io/manabox/pen/raQmpL.
+ */
+
+@import '../utilities/_all.scss';
+
+$radio-size: 22px;
+$radio-dot-size: 14px;
+$radio-label-padding-left: 48px;
+
+input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+
+  + label {
+    position: relative;
+    padding-left: $radio-label-padding-left;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 100%;
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+      width: $radio-size;
+      height: $radio-size;
+      border: 1px solid $grey-dark;
+    }
+
+    &::after {
+      top: 4px;
+      left: 4px;
+      width: $radio-dot-size;
+      height: $radio-dot-size;
+      background: $primary;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 200ms $easing;
+    }
+  }
+
+  &:checked {
+    + label {
+      color: $grey-dark;
+
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
