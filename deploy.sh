@@ -1,4 +1,4 @@
-echo "Copy files to api droplet..."
+echo "Copy files to api droplet.."
 rsync -r --delete-after --quite $SERVER_SECRET_ENV root@159.65.226.145:quizzical
 
 echo "Copying Successful"
