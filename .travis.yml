@@ -13,3 +13,9 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 rsa_deploy
 - ssh-add rsa_deploy
+deploy: 
+    provider: script
+    skip_cleanup: true
+    script: sh deploy.sh
+    on 
+       branch: master

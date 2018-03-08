@@ -1,11 +1,9 @@
-#!/bin/bash
-set -x
-if [ $TRAVIS_BRANCH == 'Develop' ] ; then
-    read -r -d '' SSH_COMMAND << EOM
-    cd /server &&
-    git pull 
-EOM
-    ssh -o "StrictHostKeyChecking no" -i deploy/deploy-key deploy@159.65.226.145 $SSH_COMMAND
-else
-    echo "Not deploying, since this branch isn't Develop."
-fi
+echo "Copy files to api droplet..."
+rsync -r --delete-after --quite $TRAVIS_BUILD_DIR root@159.65.226.145:quizzical
+
+echo "Copying Successful"
+echo "Restarting Server"
+
+ssh  root@159.65.226.145 "pm2 kill; cd quizzical/server; pm2 start server.js"
+
+echo "Server is running!"
