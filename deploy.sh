@@ -1,5 +1,5 @@
 echo "Copy files to api droplet...."
-ssh  root@159.65.226.145 "cd quizzical/server" 
+ 
 osync -r --delete-after --quitet $TRAVIS_BUILD_DIR root@159.65.226.145:quizzical/server
 
 
