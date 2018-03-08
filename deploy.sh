@@ -1,5 +1,5 @@
 echo "Copy files to api droplet...."
-rsync -r --delete-after --quitet $SERVER_SECRET_ENV root@159.65.226.145:quizzical
+rsync -r --delete-after --quitet $TRAVIS_BUILD_DIR root@159.65.226.145:quizzical
 
 echo "Copying Successful"
 echo "Restarting Server "
