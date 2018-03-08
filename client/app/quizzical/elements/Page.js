@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Page = (props: Props) => (
-  <div className="page--padding-top">
+  <div className="page">
     <div className="container">
       {props.showBackButton && <BackButton />}
 

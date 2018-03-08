@@ -1,0 +1,33 @@
+@import '../../scss/utilities/all';
+
+.container {
+  padding-top: 1em;
+}
+
+.label {
+  position: absolute;
+  font-size: 1em;
+  color: $grey;
+  transition: transform 250ms ease-in-out;
+  transform-origin: top left;
+
+  &.isFocused,
+  &.isDirty {
+    transform: translate3d(0, -1em, 0) scale(0.8);
+  }
+}
+
+.textarea {
+  padding-bottom: 8px;
+  //width: 100%;
+  border: none;
+  border-bottom: 2px solid $primary;
+  font-size: 1em;
+  background-color: transparent;
+  resize: none;
+  color: $grey-dark;
+
+  &:focus {
+    outline: none;
+  }
+}

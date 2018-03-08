@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import TextField from '../../quizzical/elements/TextField';
-import SubmitField from '../../quizzical/elements/SubmitField';
 import Button from '../../quizzical/elements/Button';
+import TextArea from '../../quizzical/elements/TextArea';
+import answerQuizStyles from './AnswerQuizQuestion.scss';
+import styles from './QuizForm.scss';
+import Radio from '../../quizzical/elements/Radio';
 
 type Props = {
   title: string,
@@ -22,11 +24,27 @@ class QuizForm extends Component<Props> {
     super(props);
 
     this.onFormSubmitted = this.onFormSubmitted.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.props.questions.length) {
+      this.addQuestion();
+    }
   }
 
   onFormSubmitted(event) {
     this.props.onSubmitted();
     event.preventDefault();
+  }
+
+  addQuestion() {
+    this.props.onQuestionAdded().then(() => {
+      const newQuestion = this.props.questions[this.props.questions.length - 1];
+
+      this.props.onChoiceAdded(newQuestion.tempId);
+      this.props.onChoiceAdded(newQuestion.tempId);
+    });
   }
 
   render() {
@@ -35,7 +53,6 @@ class QuizForm extends Component<Props> {
       title,
       questions,
       onTitleChanged,
-      onQuestionAdded,
       onQuestionTextChanged,
       onChoiceAdded,
       onChoiceTextChanged,
@@ -43,76 +60,85 @@ class QuizForm extends Component<Props> {
     } = this.props;
 
     return (
-      <form onSubmit={this.onFormSubmitted} className="container">
-        <TextField
-          label="Title"
-          name="title"
-          value={title}
-          onChange={e => onTitleChanged(e.target.value)}
-        />
-
-        <h2 className="subtitle is-2">Questions</h2>
+      <form onSubmit={this.onFormSubmitted}>
+        <div className={`is-size-3 ${styles.quizTitle}`}>
+          <TextArea
+            value={title}
+            name="title"
+            placeholder="Title of the quiz"
+            onChange={onTitleChanged}
+          />
+        </div>
 
         {questions.map(question => (
-          <div key={question.tempId}>
-            <TextField
-              label="Question text"
-              name={`question-text-${question.tempId}`}
-              value={question.text}
-              onChange={e => onQuestionTextChanged(question.tempId, e.target.value)}
-            />
+          <div
+            key={question.tempId}
+            className={`card ${answerQuizStyles.question}`}
+          >
+            <div className={`is-size-4 ${styles.questionElement}`}>
+              <TextArea
+                value={question.text}
+                name={`question-text-${question.tempId}`}
+                placeholder="Question text"
+                onChange={val => onQuestionTextChanged(question.tempId, val)}
+              />
+            </div>
 
-            <h3 className="subtitle is-4">Choices</h3>
-
-            {question.choices.map(choice => (
-              <div key={choice.tempId} className="field is-grouped">
-                <p className="control is-expanded">
-                  <input
-                    className="input"
-                    name={`choice-title-${choice.tempId}`}
-                    type="text"
+            <div>
+              {question.choices.map(choice => (
+                <Radio
+                  key={choice.tempId}
+                  id={`choice-${choice.tempId}`}
+                  name={`question-${question.tempId}`}
+                  value={choice.tempId}
+                  onChange={() => onChoiceCorrectToggled(choice.tempId, question.tempId)}
+                  className={styles.questionElement}
+                >
+                  <TextArea
                     value={choice.text}
-                    onChange={e => onChoiceTextChanged(choice.tempId, e.target.value)}
+                    name={`choice-text-${choice.tempId}`}
+                    placeholder="Choice text"
+                    onChange={val => onChoiceTextChanged(choice.tempId, val)}
                   />
-                </p>
-                <p className="control">
-                  <label
-                    htmlFor={`choice-correct-${choice.tempId}`}
-                    className="checkbox"
-                  >
-                    <input
-                      name={`choice-correct-${choice.tempId}`}
-                      id={`choice-correct-${choice.tempId}`}
-                      type="checkbox"
-                      checked={choice.correct}
-                      onChange={() => onChoiceCorrectToggled(choice.tempId, question.tempId)}
-                    />
-                    &nbsp;Correct
-                  </label>
-                </p>
+                </Radio>
+              ))}
+
+              <div>
+                <a
+                  className="is-primary"
+                  onClick={() => onChoiceAdded(question.tempId)}
+                >
+                  + add a choice
+                </a>
               </div>
-            ))}
 
-            <Button type="info" onClick={() => onChoiceAdded(question.tempId)}>
-              Add a Choice
-            </Button>
-
-            <hr />
+            </div>
           </div>
         ))}
 
-        <Button
-          type="info"
-          onClick={() => onQuestionAdded()}
+        <svg
+          className="add-card"
+          onClick={this.addQuestion}
         >
-          Add a question
-        </Button>
+          <g className="add-card__border" transform="translate(1, 1)" strokeWidth="2" strokeDasharray="15" fill="none" >
+            <rect x="0" y="0" width="calc(100% - 4px)" height="140" rx="15" />
+          </g>
 
-        <hr />
+          <text className="add-card__text">
+            <tspan x="50%" y="76">+ add a question</tspan>
+          </text>
+        </svg>
 
-        <SubmitField>
-          Save
-        </SubmitField>
+        <div className="has-text-centered">
+          <Button
+            buttonType="submit"
+            type="primary"
+            className="button--main-action"
+          >
+            Create
+          </Button>
+        </div>
+
       </form>
     );
   }

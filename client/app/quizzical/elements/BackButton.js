@@ -14,6 +14,8 @@ const BackButton = () => (
       y="0px"
       viewBox="0 0 492 492"
       style={{ enableBackground: 'new 0 0 492 492' }}
+      width="50px"
+      height="50px"
     >
       <g>
         <path

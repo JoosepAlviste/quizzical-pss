@@ -1,0 +1,10 @@
+@import '../../scss/utilities/all';
+
+.quizTitle {
+  //padding: $card-padding;
+  padding-bottom: 40px;
+}
+
+.questionElement:not(:last-of-type) {
+  margin-bottom: 30px;
+}

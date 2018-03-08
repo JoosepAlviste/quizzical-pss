@@ -28,9 +28,8 @@ export const emptyForm = () => ({
   type: EMPTY_QUIZ_FORM,
 });
 
-export const addQuestion = () => ({
-  type: ADD_QUESTION_TO_QUIZ_FORM,
-});
+export const addQuestion = () => (dispatch) =>
+  Promise.resolve().then(() => dispatch({ type: ADD_QUESTION_TO_QUIZ_FORM }));
 
 export const updateQuestionText = (tempId, text) => ({
   type: UPDATE_QUESTION_TEXT,

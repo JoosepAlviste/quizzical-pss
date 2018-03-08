@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Radio = (props: Props) => (
-  <p className={`control ${props.className}`}>
+  <div className={`control is-expanded ${props.className}`}>
     <input
       type="radio"
       id={props.id}
@@ -23,11 +23,11 @@ const Radio = (props: Props) => (
     />
     <label
       htmlFor={props.id}
-      className="radio"
+      className={`radio ${style.label}`}
     >
       {props.children}
     </label>
-  </p>
+  </div>
 );
 
 Radio.defaultProps = {

@@ -25,14 +25,14 @@ input[type="radio"] {
 
     &::before {
       left: 0;
-      top: 0;
+      top: calc(50% - #{$radio-size / 2});
       width: $radio-size;
       height: $radio-size;
       border: 1px solid $grey-dark;
     }
 
     &::after {
-      top: 4px;
+      top: calc(50% - #{$radio-dot-size / 2});
       left: 4px;
       width: $radio-dot-size;
       height: $radio-dot-size;

@@ -1,0 +1,39 @@
+@import '../../scss/utilities/all';
+
+.textarea {
+  display: block;
+  padding-bottom: 5px;
+  width: 100%;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
+  border-bottom: 1px solid $grey-lighter;
+  resize: none;
+  color: $grey-dark;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.field {
+  position: relative;
+}
+
+.container {
+  &.isFocused::after {
+    width: 100%;
+    left: 0;
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: -1px;
+    border-bottom: 2px solid $primary;
+    transition: all 200ms $easing;
+  }
+}

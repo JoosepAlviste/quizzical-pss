@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onQuestionAdded() {
-    dispatch(addQuestion());
+    return dispatch(addQuestion());
   },
 
   onQuestionTextChanged(tempId, text) {
