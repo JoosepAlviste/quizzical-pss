@@ -107,6 +107,7 @@ class AnswerQuiz extends Component<Props> {
   }
 
   render() {
+    // TODO: Refactor
     return (
       <div className="page--padding-top">
         <div className="container">

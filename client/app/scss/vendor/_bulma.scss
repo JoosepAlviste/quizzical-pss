@@ -1,3 +1,6 @@
+// Import components separately so we don't have unneeded elements. (Probably
+// not that important)
+
 @import
   '~bulma/sass/utilities/all',
   '~bulma/sass/base/all',

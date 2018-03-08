@@ -10,9 +10,12 @@
 }
 
 .back-button {
-  color: $grey-dark;
+  > svg {
+    height: 25px;
+    fill: $grey-dark;
+  }
 
-  &:hover {
-    color: $grey;
+  &:hover > svg {
+    fill: $grey;
   }
 }
