@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Modal from '../../quizzical/elements/Modal';
 import BackButton from '../../quizzical/elements/BackButton';
 import Button from '../../quizzical/elements/Button';
-import Radio from '../../quizzical/elements/Radio';
 import { Quiz } from '../reducers/answerQuiz';
-import style from './AnswerQuiz.scss';
+import AnswerQuizQuestion from './AnswerQuizQuestion';
 
 type Props = {
   quiz?: Quiz,
@@ -52,7 +51,10 @@ class AnswerQuiz extends Component<Props> {
   }
 
   handleChoiceChanged(questionId, choiceId) {
-    const userChoices = { ...this.state.userChoices, [questionId]: choiceId };
+    const userChoices = {
+      ...this.state.userChoices,
+      [questionId]: choiceId
+    };
 
     this.setState({ userChoices });
   }
@@ -108,8 +110,13 @@ class AnswerQuiz extends Component<Props> {
     );
   }
 
+  questions() {
+    return this.props.quiz && this.props.quiz.questions
+      ? this.props.quiz.questions
+      : [];
+  }
+
   render() {
-    // TODO: Refactor
     return (
       <div className="page--padding-top">
         <div className="container">
@@ -119,30 +126,13 @@ class AnswerQuiz extends Component<Props> {
           <h1 className="title has-text-centered">{this.props.quiz.title}</h1>
 
           <form onSubmit={this.handleFormSubmitted}>
-            {
-              this.props.quiz && this.props.quiz.questions &&
-              this.props.quiz.questions.map(question => (
-                <div
-                  className={`card ${style.question}`}
-                  key={question.id}
-                >
-                  <h2 className="subtitle">{question.text}</h2>
-
-                  {question.choices.map(choice => (
-                    <Radio
-                      key={choice.id}
-                      id={`choice-${choice.id}`}
-                      name={`question-${question.id}`}
-                      value={choice.id}
-                      onChange={() => this.handleChoiceChanged(question.id, choice.id)}
-                      className={style.choiceControl}
-                    >
-                      {choice.text}
-                    </Radio>
-                  ))}
-                </div>
-              ))
-            }
+            {this.questions().map(question => (
+              <AnswerQuizQuestion
+                key={question.id}
+                question={question}
+                onChoiceChanged={this.handleChoiceChanged}
+              />
+            ))}
 
             <div className="has-text-centered">
               <Button
