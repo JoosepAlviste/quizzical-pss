@@ -1,17 +1,11 @@
 import React from 'react';
 import CreateQuizForm from './CreateQuizForm';
-import BackButton from '../../quizzical/elements/BackButton';
+import Page from '../../quizzical/elements/Page';
 
 const CreateQuizPage = () => (
-  <div className="page--padding-top">
-    <div className="container">
-      <BackButton />
-
-      <h1 className="title has-text-centered">Add a New Quiz!</h1>
-
-      <CreateQuizForm />
-    </div>
-  </div>
+  <Page title="Add a New Quiz!">
+    <CreateQuizForm />
+  </Page>
 );
 
 export default CreateQuizPage;

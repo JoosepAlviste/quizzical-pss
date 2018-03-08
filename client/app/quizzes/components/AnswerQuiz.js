@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../../quizzical/elements/Modal';
-import BackButton from '../../quizzical/elements/BackButton';
 import Button from '../../quizzical/elements/Button';
 import { Quiz } from '../reducers/answerQuiz';
 import AnswerQuizQuestion from './AnswerQuizQuestion';
+import Page from '../../quizzical/elements/Page';
 
 type Props = {
   quiz?: Quiz,
@@ -53,7 +53,7 @@ class AnswerQuiz extends Component<Props> {
   handleChoiceChanged(questionId, choiceId) {
     const userChoices = {
       ...this.state.userChoices,
-      [questionId]: choiceId
+      [questionId]: choiceId,
     };
 
     this.setState({ userChoices });
@@ -118,33 +118,29 @@ class AnswerQuiz extends Component<Props> {
 
   render() {
     return (
-      <div className="page--padding-top">
-        <div className="container">
+      <Page title={this.props.quiz.title}>
 
-          <BackButton />
+        <form onSubmit={this.handleFormSubmitted}>
 
-          <h1 className="title has-text-centered">{this.props.quiz.title}</h1>
+          {this.questions().map(question => (
+            <AnswerQuizQuestion
+              key={question.id}
+              question={question}
+              onChoiceChanged={this.handleChoiceChanged}
+            />
+          ))}
 
-          <form onSubmit={this.handleFormSubmitted}>
-            {this.questions().map(question => (
-              <AnswerQuizQuestion
-                key={question.id}
-                question={question}
-                onChoiceChanged={this.handleChoiceChanged}
-              />
-            ))}
+          <div className="has-text-centered">
+            <Button
+              buttonType="submit"
+              type="primary"
+              className="button--main-action"
+            >
+              Submit
+            </Button>
+          </div>
 
-            <div className="has-text-centered">
-              <Button
-                buttonType="submit"
-                type="primary"
-                className="button--main-action"
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
-        </div>
+        </form>
 
         <Modal
           isActive={this.state.showModal}
@@ -157,10 +153,11 @@ class AnswerQuiz extends Component<Props> {
           <p>Correct</p>
         </Modal>
 
-      </div>
+      </Page>
     );
   }
 }
+
 AnswerQuiz.defaultProps = {
   quiz: null,
 };
