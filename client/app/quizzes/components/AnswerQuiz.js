@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../../quizzical/elements/Modal';
+import BackButton from '../../quizzical/elements/BackButton';
 import { Quiz } from '../reducers/answerQuiz';
 import style from './AnswerQuiz.scss';
 
@@ -110,9 +111,7 @@ class AnswerQuiz extends Component<Props> {
       <div className="page--padding-top">
         <div className="container">
 
-          <Link className="back-button" to="/quizzes">
-            <i className="fa fa-arrow-left fa-3x" />
-          </Link>
+          <BackButton />
 
           <h1 className="title has-text-centered">{this.props.quiz.title}</h1>
 
