@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from '../../quizzical/elements/Modal';
 import { Quiz } from '../reducers/answerQuiz';
 import style from './AnswerQuiz.scss';
 
@@ -86,6 +87,24 @@ class AnswerQuiz extends Component<Props> {
     this.setState({ showModal: false });
   }
 
+  modalFooterContent() {
+    return (
+      <span>
+        <button
+          type="button"
+          className="button is-text is-wide"
+          onClick={this.hideModal}
+        >
+          Try again
+        </button>
+
+        <Link className="button is-primary is-wide" to="/">
+          Done
+        </Link>
+      </span>
+    );
+  }
+
   render() {
     return (
       <div className="page--padding-top">
@@ -143,35 +162,17 @@ class AnswerQuiz extends Component<Props> {
           </form>
         </div>
 
-        <div className={`modal ${this.state.showModal && 'is-active'}`}>
-          <div className="modal-background" />
-          <div className="modal-card">
-            <header className="modal-card-head">
-              <h2 className="subtitle">You have finished this quiz!</h2>
-            </header>
-            <div className="modal-card-body has-text-centered">
-              <p className="subtitle is-size-1 is-marginless">
-                {this.state.score} / {this.maxScore()}
-              </p>
-              <p>Correct</p>
-            </div>
-            <footer className="modal-card-foot">
+        <Modal
+          isActive={this.state.showModal}
+          title="You have finished this quiz!"
+          footerContent={this.modalFooterContent()}
+        >
+          <p className="subtitle is-size-1 is-marginless">
+            {this.state.score} / {this.maxScore()}
+          </p>
+          <p>Correct</p>
+        </Modal>
 
-              <button
-                type="button"
-                className="button is-text is-wide"
-                onClick={this.hideModal}
-              >
-                Try again
-              </button>
-
-              <Link className="button is-primary is-wide" to="/">
-                Done
-              </Link>
-
-            </footer>
-          </div>
-        </div>
       </div>
     );
   }
