@@ -1,15 +1,16 @@
 @import '../utilities/all';
 
 .modal-card {
+  border-radius: $radius-large;
   box-shadow: $card-shadow;
 }
 
-.modal-card-head,
-.modal-card-foot {
+.modal-card-head {
   justify-content: center;
 }
 
 .modal-card-foot {
+  justify-content: flex-end;
   background: $modal-card-foot-background-color;
   padding: $modal-card-foot-padding;
 }

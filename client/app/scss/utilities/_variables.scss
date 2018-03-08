@@ -3,6 +3,7 @@
 // Colors
 $grey-dark: #4f6174;
 $grey: #747d87;
+$white-ter: #e0e4e9;
 $white-bis: #f0f3f7;
 
 $primary: $cyan;
@@ -25,6 +26,10 @@ $title-weight: $weight-bold;
 $subtitle-weight: $weight-bold;
 
 $size-1: 3.5rem;
+
+// Button
+$button-text-hover-background-color: $white-ter;
+$button-text-hover-color: $grey-dark;
 
 // Navbar
 $navbar-height: 3.25rem;

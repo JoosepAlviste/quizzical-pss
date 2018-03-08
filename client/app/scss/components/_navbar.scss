@@ -1,7 +1,26 @@
+@import '../utilities/all';
+
 .navbar {
+  align-items: stretch;
+  display: flex;
   -webkit-app-region: drag;
 }
 
+.navbar-end {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
 .navbar-item {
+  display: flex;
+  align-items: center;
+  color: $white;
   -webkit-app-region: no-drag;
+}
+
+.navbar.is-primary .navbar-end > a.navbar-item:hover {
+  color: $white;
+  background-color: darken($primary, 5%);
 }

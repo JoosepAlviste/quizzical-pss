@@ -25,6 +25,7 @@ class AnswerQuiz extends Component<Props> {
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
     this.handleFormSubmitted = this.handleFormSubmitted.bind(this);
     this.maxScore = this.maxScore.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
@@ -79,6 +80,10 @@ class AnswerQuiz extends Component<Props> {
     return this.props.quiz
       && this.props.quiz.questions
       && this.props.quiz.questions.length;
+  }
+
+  hideModal() {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -151,9 +156,19 @@ class AnswerQuiz extends Component<Props> {
               <p>Correct</p>
             </div>
             <footer className="modal-card-foot">
+
+              <button
+                type="button"
+                className="button is-text is-wide"
+                onClick={this.hideModal}
+              >
+                Try again
+              </button>
+
               <Link className="button is-primary is-wide" to="/">
                 Done
               </Link>
+
             </footer>
           </div>
         </div>
