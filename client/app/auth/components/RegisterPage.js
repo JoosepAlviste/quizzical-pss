@@ -1,19 +1,11 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
-import BackButton from '../../quizzical/elements/BackButton';
+import Page from '../../quizzical/elements/Page';
 
 const RegisterPage = () => (
-  <div className="page--padding-top">
-    <div className="container">
-
-      <BackButton />
-
-      <h1 className="title has-text-centered">Register</h1>
-
-      <RegisterForm />
-
-    </div>
-  </div>
+  <Page title="Register">
+    <RegisterForm />
+  </Page>
 );
 
 export default RegisterPage;
