@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../../quizzical/elements/Modal';
 import BackButton from '../../quizzical/elements/BackButton';
+import Button from '../../quizzical/elements/Button';
+import Radio from '../../quizzical/elements/Radio';
 import { Quiz } from '../reducers/answerQuiz';
 import style from './AnswerQuiz.scss';
 
@@ -91,13 +93,13 @@ class AnswerQuiz extends Component<Props> {
   modalFooterContent() {
     return (
       <span>
-        <button
-          type="button"
-          className="button is-text is-wide"
+        <Button
+          className="is-wide"
+          type="text"
           onClick={this.hideModal}
         >
           Try again
-        </button>
+        </Button>
 
         <Link className="button is-primary is-wide" to="/">
           Done
@@ -127,37 +129,29 @@ class AnswerQuiz extends Component<Props> {
                   <h2 className="subtitle">{question.text}</h2>
 
                   {question.choices.map(choice => (
-                    <p
+                    <Radio
                       key={choice.id}
-                      className={`control ${style.choiceControl}`}
+                      id={`choice-${choice.id}`}
+                      name={`question-${question.id}`}
+                      value={choice.id}
+                      onChange={() => this.handleChoiceChanged(question.id, choice.id)}
+                      className={style.choiceControl}
                     >
-                      <input
-                        type="radio"
-                        id={`choice-${choice.id}`}
-                        name={`question-${question.id}`}
-                        value={choice.id}
-                        onChange={() => this.handleChoiceChanged(question.id, choice.id)}
-                        className={style.radio}
-                      />
-                      <label
-                        htmlFor={`choice-${choice.id}`}
-                        className="radio"
-                      >
-                        {choice.text}
-                      </label>
-                    </p>
+                      {choice.text}
+                    </Radio>
                   ))}
                 </div>
               ))
             }
 
             <div className="has-text-centered">
-              <button
-                type="submit"
-                className="button is-primary  button--main-action"
+              <Button
+                buttonType="submit"
+                type="primary"
+                className="button--main-action"
               >
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
         </div>
