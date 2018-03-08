@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - '8'
+  - '7'
+addons:
+    ssh_known_hosts: 159.65.226.145
+
+install: npm install
+
+before_script: cd server
+ 
+
