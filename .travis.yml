@@ -8,10 +8,10 @@ install: npm install
 before_script: cd server
 before_install:
 - openssl aes-256-cbc -K $encrypted_a8c9b2db4a8b_key -iv $encrypted_a8c9b2db4a8b_iv
-  -in travis_rsa.enc -out /tmp/travis_rsa -d
+  -in rsa_travis.enc -out /tmp/rsa_travis -d
 - eval "$(ssh-agent -s)"
-- chmod 600 /tmp/travis_rsa
-- ssh-add /tmp/travis_rsa
+- chmod 600 /tmp/rsa_travis
+- ssh-add /tmp/rsa_travis
 deploy:
   provider: script
   skip_cleanup: true
