@@ -2,7 +2,6 @@
   "name": "quizzical",
   "version": "1.0.0",
   "description": "A quiz application for creating and taking quizzes on various subjects.",
-  "main": "",
   "directories": {
     "doc": "docs"
   },
