@@ -2,7 +2,8 @@ echo "Copy files to api droplet...."
  
 rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR root@159.65.226.145:quizzical
 
-ssh root@159.65.226.145 "git pull"
+
+ssh root@159.65.226.145 "cd quizzical; git pull"
 
 echo "Copying Successful"
 echo "Restarting Server "
