@@ -2,7 +2,7 @@
   "name": "quizzical",
   "version": "1.0.0",
   "description": "A quiz application for creating and taking quizzes on various subjects.",
-  "main": "test.js",  
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -19,7 +19,4 @@
     "url": "https://github.com/JoosepAlviste/quizzical/issues"
   },
   "homepage": "https://github.com/JoosepAlviste/quizzical#readme"
-  "dependencies": {
-    "mocha":"^2.2.5"
-  }	
 }
