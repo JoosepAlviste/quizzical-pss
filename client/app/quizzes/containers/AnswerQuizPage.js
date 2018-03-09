@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux';
 import AnswerQuiz from '../components/AnswerQuiz';
 import { fetchQuiz } from '../actions';

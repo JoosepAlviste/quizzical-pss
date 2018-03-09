@@ -1,3 +1,4 @@
+// @flow
 import axios from 'axios';
 import { Quiz } from '../reducers/quizForm';
 import { Quiz as AnswerQuiz } from '../reducers/answerQuiz';
@@ -12,7 +13,7 @@ type QuizCreateResponse = {
 };
 
 export const fetchQuizzes = (): Promise<QuizListResponse> =>
-  axios.get('/quizzes').then((response) => response.data);
+  axios.get('/quizzes').then(response => response.data);
 
 export const storeQuiz = (quiz: Quiz): Promise<QuizCreateResponse> =>
   axios.post('/quizzes', quiz).then(response => response.data);

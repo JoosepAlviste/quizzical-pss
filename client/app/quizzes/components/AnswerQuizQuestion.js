@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import Radio from '../../quizzical/elements/Radio';
 import { Question } from '../reducers/answerQuiz';

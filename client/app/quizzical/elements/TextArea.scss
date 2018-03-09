@@ -14,6 +14,10 @@
   &:focus {
     outline: none;
   }
+
+  &::placeholder {
+    color: $grey;
+  }
 }
 
 .field {

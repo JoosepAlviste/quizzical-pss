@@ -1,3 +1,4 @@
+// @flow
 import * as api from '../api';
 
 export const RECEIVE_QUIZZES = 'RECEIVE_QUIZZES';
@@ -9,9 +10,8 @@ export const fetchQuizzes = () => (dispatch) => api.fetchQuizzes()
     quizzes,
   }));
 
-export const fetchQuiz = (id) => (dispatch) =>
-  api.fetchQuiz(id)
-    .then(quiz => dispatch({
-      type: RECEIVE_QUIZ_FOR_ANSWERING,
-      quiz,
-    }));
+export const fetchQuiz = (id) => (dispatch) => api.fetchQuiz(id)
+  .then(quiz => dispatch({
+    type: RECEIVE_QUIZ_FOR_ANSWERING,
+    quiz,
+  }));

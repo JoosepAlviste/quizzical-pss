@@ -1,9 +1,13 @@
+// @flow
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
-import Button from '../../quizzical/elements/Button';
 import TextArea from '../../quizzical/elements/TextArea';
 import answerQuizStyles from './AnswerQuizQuestion.scss';
 import styles from './QuizForm.scss';
 import Radio from '../../quizzical/elements/Radio';
+import AddCard from './AddCard';
+import MainActionButton from '../../quizzical/elements/MainActionButton';
 
 type Props = {
   title: string,
@@ -15,6 +19,7 @@ type Props = {
   onChoiceAdded: (string) => void,
   onChoiceTextChanged: (string, string) => void,
   onChoiceCorrectToggled: (string) => void,
+  history: {push: (string) => void},
 };
 
 class QuizForm extends Component<Props> {
@@ -34,8 +39,8 @@ class QuizForm extends Component<Props> {
   }
 
   onFormSubmitted(event) {
-    this.props.onSubmitted();
     event.preventDefault();
+    this.props.onSubmitted().then(() => this.props.history.push('/'));
   }
 
   addQuestion() {
@@ -44,6 +49,8 @@ class QuizForm extends Component<Props> {
 
       this.props.onChoiceAdded(newQuestion.tempId);
       this.props.onChoiceAdded(newQuestion.tempId);
+
+      return null;
     });
   }
 
@@ -116,28 +123,13 @@ class QuizForm extends Component<Props> {
           </div>
         ))}
 
-        <svg
-          className="add-card"
-          onClick={this.addQuestion}
-        >
-          <g className="add-card__border" transform="translate(1, 1)" strokeWidth="2" strokeDasharray="15" fill="none" >
-            <rect x="0" y="0" width="calc(100% - 4px)" height="140" rx="15" />
-          </g>
+        <AddCard onClick={this.addQuestion}>
+          + add a question
+        </AddCard>
 
-          <text className="add-card__text">
-            <tspan x="50%" y="76">+ add a question</tspan>
-          </text>
-        </svg>
-
-        <div className="has-text-centered">
-          <Button
-            buttonType="submit"
-            type="primary"
-            className="button--main-action"
-          >
-            Create
-          </Button>
-        </div>
+        <MainActionButton buttonType="submit">
+          Create
+        </MainActionButton>
 
       </form>
     );

@@ -1,4 +1,6 @@
+// @flow
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import QuizForm from '../components/QuizForm';
 import {
   addChoice, addQuestion, submitCreateQuizForm, toggleChoiceCorrect, updateChoiceText,
@@ -16,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onSubmitted() {
-    dispatch(submitCreateQuizForm());
+    return dispatch(submitCreateQuizForm());
   },
 
   onQuestionAdded() {
@@ -40,4 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuizForm));

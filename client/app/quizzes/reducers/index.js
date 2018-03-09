@@ -1,3 +1,4 @@
+// @flow
 import { RECEIVE_QUIZZES } from '../actions';
 
 export type QuizType = {

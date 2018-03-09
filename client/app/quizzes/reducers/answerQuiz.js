@@ -1,3 +1,4 @@
+// @flow
 import { RECEIVE_QUIZ_FOR_ANSWERING } from '../actions';
 
 export type Choice = {
@@ -22,6 +23,13 @@ const answerQuiz = (state?: Quiz = {}, action) => {
   switch (action.type) {
     case RECEIVE_QUIZ_FOR_ANSWERING:
       return action.quiz;
+    case '@@router/LOCATION_CHANGE':
+      if (action.payload.pathname === '/') {
+        // Reset the quiz
+        return {};
+      }
+
+      return state;
     default:
       return state;
   }

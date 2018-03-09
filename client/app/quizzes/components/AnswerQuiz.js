@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,6 +7,7 @@ import Button from '../../quizzical/elements/Button';
 import { Quiz } from '../reducers/answerQuiz';
 import AnswerQuizQuestion from './AnswerQuizQuestion';
 import Page from '../../quizzical/elements/Page';
+import MainActionButton from '../../quizzical/elements/MainActionButton';
 
 type Props = {
   quiz?: Quiz,
@@ -130,15 +132,9 @@ class AnswerQuiz extends Component<Props> {
             />
           ))}
 
-          <div className="has-text-centered">
-            <Button
-              buttonType="submit"
-              type="primary"
-              className="button--main-action"
-            >
-              Submit
-            </Button>
-          </div>
+          <MainActionButton buttonType="submit">
+            Submit
+          </MainActionButton>
 
         </form>
 

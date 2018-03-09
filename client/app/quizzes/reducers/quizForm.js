@@ -1,3 +1,4 @@
+// @flow
 import uuid from 'uuid/v1';
 import {
   ADD_CHOICE_TO_QUIZ_FORM, ADD_QUESTION_TO_QUIZ_FORM, EMPTY_QUIZ_FORM, TOGGLE_CHOICE_CORRECT,

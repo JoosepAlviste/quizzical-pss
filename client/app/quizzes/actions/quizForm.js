@@ -1,3 +1,4 @@
+// @flow
 import * as api from '../api';
 
 export const UPDATE_QUIZ_TITLE = 'UPDATE_QUIZ_TITLE';
@@ -15,8 +16,6 @@ export const updateQuizTitle = (title) => ({
 
 export const submitCreateQuizForm = () => (dispatch, getState) => {
   const quiz = getState().quizForm;
-
-  console.log('Creating quiz!', quiz);
 
   return api.storeQuiz(quiz)
     .then(newQuiz => newQuiz)
