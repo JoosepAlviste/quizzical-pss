@@ -1,7 +1,6 @@
 sudo: true
 language: node_js
 node_js:
-- "iojs"
 - '8'
 addons:
   ssh_known_hosts: 159.65.226.145
