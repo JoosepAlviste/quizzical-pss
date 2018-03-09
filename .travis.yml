@@ -1,11 +1,9 @@
-sudo: true
 language: node_js
 node_js:
 - '8'
 addons:
   ssh_known_hosts: 159.65.226.145
 before_install:
-
 - npm install -g npm@latest
 - openssl aes-256-cbc -K $encrypted_a8c9b2db4a8b_key -iv $encrypted_a8c9b2db4a8b_iv
   -in rsa_travis.enc -out /tmp/rsa_travis -d
@@ -15,6 +13,6 @@ before_install:
 deploy:
   provider: script
   skip_cleanup: true
-  script: sh deploy.sh
+  script: sh ./deploy.sh
   on:
     branch: master
