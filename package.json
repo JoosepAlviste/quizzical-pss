@@ -1,0 +1,19 @@
+{
+  "name": "quizzical",
+  "version": "1.0.0",
+  "description": "A quiz application for creating and taking quizzes on various subjects.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoosepAlviste/quizzical.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoosepAlviste/quizzical/issues"
+  },
+  "homepage": "https://github.com/JoosepAlviste/quizzical#readme"
+}
