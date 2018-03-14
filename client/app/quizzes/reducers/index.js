@@ -8,14 +8,9 @@ export type QuizType = {
 
 export type QuizzesListType = Array<QuizType>;
 
-export type QuizzesActionType = {
-  type: string,
-  quizzes?: QuizzesListType,
-};
-
 const quizzes = (
   state: QuizzesListType = [],
-  action: QuizzesActionType
+  action
 ): QuizzesListType => {
   switch (action.type) {
     case RECEIVE_QUIZZES:
