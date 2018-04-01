@@ -2,7 +2,7 @@
 
 A quiz application for creating and taking quizzes on various subjects.
 
-For the production version, download the application here: https://joosep.xyz/quizzical.
+For the production version, download the application here: https://joosep.xyz/quizzical-pss.
 
 ## Structure
 
